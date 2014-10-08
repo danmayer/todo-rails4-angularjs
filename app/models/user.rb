@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable
 
   has_many :task_lists, foreign_key: :owner_id
+  has_many :trips, foreign_key: :owner_id
 
   after_create :create_task_list
 

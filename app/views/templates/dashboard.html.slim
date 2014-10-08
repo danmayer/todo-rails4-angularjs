@@ -1,29 +1,51 @@
-div#calculator
-  p(data-no-turbolink)
-    | estimate your travel costs with our, 
-    a(href="/calc" data-no-turbolink)
-      'travel calculator
+div#app(ng-app="todoApp")
+  div#calculator
+    p(data-no-turbolink)
+      | estimate your travel costs with our, 
+      a(href="/calc" data-no-turbolink)
+        'travel calculator
         
-.ng-cloak(ng-init="init()")
+  .ng-cloak(ng-init="init()")
 
-  div.panel.panel-default.dashboard-list
-    div.panel-heading 
-      h4 Your todo lists
-    ul.list-group(ng-show="lists == 0")
-      li.list-group-item
-        ' You haven't created any lists yet.      
-    ul.list-group
-      li.list-group-item(ng-repeat="list in lists")
-        button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteList(list, $index)")
-          span.glyphicon.glyphicon-ban-circle        
-        a(href="/task_lists/{{list.id}}") 
-          ' {{list.name}} ({{list.tasks.length}})      
+    div.panel.panel-default.dashboard-list
+      div.panel-heading 
+        h4 Your trips
+      ul.list-group(ng-show="trips == 0")
+        li.list-group-item
+          ' You haven't created any trips yet.      
+      ul.list-group
+        li.list-group-item(ng-repeat="trip in trips")
+          button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteTrip(trip, $index)")
+            span.glyphicon.glyphicon-ban-circle        
+          a(href="/trips/{{trip.id}}") 
+            ' {{trip.title}} ({{trip.costs.length}})      
 
-  form#new_list(ng-submit="createList(listName)")
-    .input-group
-      input#taskDescription.form-control.input-lg(type="text" autofocus="autofocus" placeholder="List name" maxlength="255" ng-model="listName" data-non-blank)
-      span.input-group-btn
-        button.btn.btn-primary.btn-lg(type="submit") create list
+    form#new_trip(ng-submit="createTrip(tripTitle)")
+      .input-group
+        input#tripTitle.form-control.input-lg(type="text" autofocus="autofocus" placeholder="Trip name" maxlength="255" ng-model="tripTitle" data-non-blank)
+        span.input-group-btn
+          button.btn.btn-primary.btn-lg(type="submit") create trip
+    
+    hr
+
+    div.panel.panel-default.dashboard-list
+      div.panel-heading 
+        h4 Your todo lists
+      ul.list-group(ng-show="lists == 0")
+        li.list-group-item
+          ' You haven't created any lists yet.      
+      ul.list-group
+        li.list-group-item(ng-repeat="list in lists")
+          button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteList(list, $index)")
+            span.glyphicon.glyphicon-ban-circle        
+          a(href="/task_lists/{{list.id}}") 
+            ' {{list.name}} ({{list.tasks.length}})      
+
+    form#new_list(ng-submit="createList(listName)")
+      .input-group
+        input#taskDescription.form-control.input-lg(type="text" autofocus="autofocus" placeholder="List name" maxlength="255" ng-model="listName" data-non-blank)
+        span.input-group-btn
+          button.btn.btn-primary.btn-lg(type="submit") create list
         
 
   

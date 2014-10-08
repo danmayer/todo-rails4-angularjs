@@ -8,13 +8,6 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
-  - if todo_app?
-    body(ng-app="todoApp")
-      .container
-        = render "layouts/navigation"
-        = render "layouts/flash"
-        = yield
-  - else
     body()
       .container
         = render "layouts/navigation"
