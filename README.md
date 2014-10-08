@@ -1,3 +1,17 @@
+# got invoices etc going without any of the better setup...
+
+git checkout app/assets/javascripts/application.js                                                     
+action@railstestbox-16181:~/workspace/todo-rails4-angularjs(master*)$ mv app/assets/javascripts/todoApp.js.coffee public/                                                    
+action@railstestbox-16181:~/workspace/todo-rails4-angularjs(master*)$ mv app/assets/javascripts/services/ public/                                                            
+action@railstestbox-16181:~/workspace/todo-rails4-angularjs(master*)$ mv app/assets/javascripts/controllers/ public/                                                         
+action@railstestbox-16181:~/workspace/todo-rails4-angularjs(master*)$ mv app/assets/javascripts/directives/ public/    
+
+undo the above... then get the controller etc for the invoice in directory structure like above.
+
+# similar apps
+
+http://www.independenttraveler.com/travel-budget-calculator
+
 # Showcase of Rails 4 and AngularJS integration
 
 This is a todo list management application, written in Rails 4 and AngularJS. Tasks support CRUD operations as well as drag&drop sorting and setting due dates via a popup calendar. All task operations are done on the client side and synchronized to the server. The application sports a RESTful API used by AngularJS SPA and also usable standalone.
