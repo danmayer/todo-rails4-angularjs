@@ -11,10 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008073632) do
+ActiveRecord::Schema.define(version: 20141011080531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "costs", force: true do |t|
+    t.integer  "trip_id"
+    t.string   "title",                       null: false
+    t.text     "notes"
+    t.float    "estimate"
+    t.integer  "quantity"
+    t.float    "final_total"
+    t.integer  "priority"
+    t.boolean  "paid",        default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "costs", ["id"], name: "index_costs_on_id", using: :btree
+  add_index "costs", ["trip_id"], name: "index_costs_on_trip_id", using: :btree
+
+  create_table "destinations", force: true do |t|
+    t.integer  "trip_id"
+    t.string   "title",      null: false
+    t.text     "options"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "destinations", ["id"], name: "index_destinations_on_id", using: :btree
+  add_index "destinations", ["trip_id"], name: "index_destinations_on_trip_id", using: :btree
 
   create_table "task_lists", force: true do |t|
     t.integer  "owner_id"

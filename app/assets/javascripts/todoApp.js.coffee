@@ -9,7 +9,9 @@ todoApp.config ($routeProvider, $locationProvider) ->
   $routeProvider.when '/', redirectTo: '/dashboard'
   $routeProvider.when '/dashboard', templateUrl: '/templates/dashboard.html', controller: 'DashboardController'
   $routeProvider.when '/task_lists/:list_id', templateUrl: '/templates/task_list.html', controller: 'TodoListController'   
+  $routeProvider.when '/trips/:trip_id', templateUrl: '/templates/trip_detail.html', controller: 'TripController'   
 
+  
 # Makes AngularJS work with turbolinks.
 $(document).on 'page:load', ->
   $('[ng-app]').each ->

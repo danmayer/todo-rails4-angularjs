@@ -6,6 +6,7 @@ Todo::Application.routes.draw do
       resource :session, only: [:create, :destroy]
     end
     resources :trips, only: [:index, :create, :update, :destroy, :show] do
+      resources :costs, only: [:index, :create, :update, :destroy]
     end
     resources :task_lists, only: [:index, :create, :update, :destroy, :show] do
       resources :tasks, only: [:index, :create, :update, :destroy]
@@ -17,5 +18,6 @@ Todo::Application.routes.draw do
   get '/calc' => "home#calculator"
   get '/dashboard' => 'templates#index'
   get '/task_lists/:id' => 'templates#index'
+  get '/trips/:id' => 'templates#index'
   get '/templates/:path.html' => 'templates#template', :constraints => { :path => /.+/  }
 end
