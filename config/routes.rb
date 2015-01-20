@@ -5,10 +5,15 @@ Todo::Application.routes.draw do
     devise_scope :user do
       resource :session, only: [:create, :destroy]
     end
+    
+    resources :destinations, only: [:index, :show] do
+    end
+    
     resources :trips, only: [:index, :create, :update, :destroy, :show] do
       resources :costs, only: [:index, :create, :update, :destroy]
-      resources :destinations, only: [:index, :create, :update, :destroy]
+      resources :trip_destinations, only: [:index, :create, :update, :destroy]
     end
+    
     resources :task_lists, only: [:index, :create, :update, :destroy, :show] do
       resources :tasks, only: [:index, :create, :update, :destroy]
     end

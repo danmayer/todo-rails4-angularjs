@@ -13,7 +13,10 @@
       'add trip destination
     form#new_cost(ng-submit="addDestination()")
       .input-group
-        input#destinationTitle.form-control.input-lg(type="text" autofocus="autofocus" placeholder="destination title" maxlength="255" ng-model="destinationTitle" data-non-blank)
+        <select ng-model="traveldestinations">
+          <option style="display:none" value="">select a destination</option>
+          <option ng-repeat="destination in destinations" value="{{destination.id}}">{{destination.title}}</option>
+        </select>
         input#destinationArrival.form-control.input-lg(type="text" placeholder="arrival date" maxlength="50" ng-model="destinationArrival" data-non-blank)
         span.input-group-btn
           button.btn.btn-primary.btn-lg(type="submit") add

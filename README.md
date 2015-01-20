@@ -27,6 +27,7 @@ http://www.independenttraveler.com/travel-budget-calculator
 * autofill cities on typing
 * guest account creation flow (create a whole trip and calculations as a guest and then create account)
 * Start building out Rspec tests
+* rename destination options as it conflicts with activemodel::serializer
 
 # Showcase of Rails 4 and AngularJS integration
 

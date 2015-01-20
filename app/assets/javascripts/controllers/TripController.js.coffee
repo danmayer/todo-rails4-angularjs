@@ -1,11 +1,13 @@
-angular.module('todoApp').controller "TripController", ($scope, $timeout, $routeParams, $location, Cost, Trip) ->
+angular.module('todoApp').controller "TripController", ($scope, $timeout, $routeParams, $location, Cost, Trip, Destination) ->
   $scope.sortMethod = 'priority'
   $scope.sortableEnabled = true
 
   $scope.init = () ->
     @costService = new Cost($routeParams.trip_id, serverErrorHandler)
     @tripService = new Trip(serverErrorHandler)
+    @destinationService = new Destination(serverErrorHandler)
     $scope.trip = @tripService.find $routeParams.trip_id
+    $scope.destinations = @destinationService.all()
 
   $scope.addCost = ->
     raisePriorities()
