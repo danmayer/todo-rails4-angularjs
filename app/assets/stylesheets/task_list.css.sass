@@ -41,7 +41,7 @@ form#new_task
       color: #a9a9a9
       text-decoration: line-through
 
-  .task-description
+  .task-description, .cost-title
     cursor: text
     &, div, form, input
       display: inline
@@ -58,8 +58,15 @@ form#new_task
       display: inline-block
       button
         margin-right: 10px
+        
+  .cost-buttons
+    margin-top: -15px
+    .calendar-button
+      display: inline-block
+      button
+        margin-right: 10px
 
-  .task-completed
+  .task-completed, .cost-completed
     display: inline-block
     vertical-align: top
     margin-top: 7px
