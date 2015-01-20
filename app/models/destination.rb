@@ -1,9 +1,6 @@
 class Destination < ActiveRecord::Base
-  belongs_to :trip
-  #has_many :costs, -> { order :priority }, foreign_key: :list_id, dependent: :destroy
-  def costs
-    ['flight']
-  end
+  has_many :trip_destinations
+  has_many :trips, through: :trip_destinations
   
   validates :title, presence: true
 end

@@ -1,5 +1,5 @@
 class CreateCosts < ActiveRecord::Migration
-  def change
+  def change    
     create_table :costs do |t|
       t.belongs_to :trip
       t.string :title, null: false

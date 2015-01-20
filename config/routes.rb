@@ -7,6 +7,7 @@ Todo::Application.routes.draw do
     end
     resources :trips, only: [:index, :create, :update, :destroy, :show] do
       resources :costs, only: [:index, :create, :update, :destroy]
+      resources :destinations, only: [:index, :create, :update, :destroy]
     end
     resources :task_lists, only: [:index, :create, :update, :destroy, :show] do
       resources :tasks, only: [:index, :create, :update, :destroy]

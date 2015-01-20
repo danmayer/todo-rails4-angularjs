@@ -8,13 +8,25 @@
     div.panel-heading     
       editablespan(model="trip.title" on-ready="tripTitleEdited(trip.title)" input-class="form-control" span-class="trip-title")
       button.btn.btn-danger.btn-xs.pull-right.trip-delete(type="button" ng-click="tripDelete(trip)")
-            span.glyphicon.glyphicon-ban-circle        
+            span.glyphicon.glyphicon-ban-circle
+    h3.add-trip-destination
+      'add trip destination
+    form#new_cost(ng-submit="addDestination()")
+      .input-group
+        input#destinationTitle.form-control.input-lg(type="text" autofocus="autofocus" placeholder="destination title" maxlength="255" ng-model="destinationTitle" data-non-blank)
+        input#destinationArrival.form-control.input-lg(type="text" placeholder="arrival date" maxlength="50" ng-model="destinationArrival" data-non-blank)
+        span.input-group-btn
+          button.btn.btn-primary.btn-lg(type="submit") add
+          
+    h3.add-trip-cost
+      'add trip cost
     form#new_cost(ng-submit="addCost()")
       .input-group
         input#costTitle.form-control.input-lg(type="text" autofocus="autofocus" placeholder="cost title" maxlength="255" ng-model="costTitle" data-non-blank)
         input#costEstimate.form-control.input-lg(type="text" placeholder="cost estimate" maxlength="50" ng-model="costEstimate" data-non-blank)
         span.input-group-btn
           button.btn.btn-primary.btn-lg(type="submit") add
+          
     ul.list-group(ui-sortable="sortableCosts" ng-model="trip.costs" ui-sortable-ext="sortableEnabled")
       li.list-group-item(ng-repeat="cost in trip.costs | orderBy:sortMethod" ng-class="{completed: cost.completed, draggable: sortMethod == 'priority'}")
         .cost-completed
@@ -33,4 +45,9 @@
               span.glyphicon.glyphicon-time
         .cost-due-date(ng-show="cost.due_date")
           small
-            ' Due date: {{cost.due_date}}    
+            ' Due date: {{cost.due_date}}
+            
+    ul.list-group(ui-sortable="sortableDestinations" ng-model="trip.trip_destinations" ui-sortable-ext="sortableEnabled")
+      li.list-group-item(ng-repeat="destination in trip.trip_destinations | orderBy:sortMethod" ng-class="{arrived: destination.arrival, draggable: sortMethod == 'arrival'}")
+        .destination-title
+          ' {{destination.id}}, {{destination.title}}, {{destination.arrival}}

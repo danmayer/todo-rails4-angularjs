@@ -1,5 +1,6 @@
 class Api::TripsController < Api::BaseController
-
+  before_action :check_owner, only: [:show, :update, :destroy]
+  
   def index
     render json: current_user.trips
   end
@@ -33,6 +34,6 @@ class Api::TripsController < Api::BaseController
   end
 
   def safe_params
-    params.require(:trip).permit(:title)
+    params.require(:destination).permit(:title)
   end
 end

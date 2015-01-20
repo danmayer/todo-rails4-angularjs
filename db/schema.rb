@@ -11,29 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011080531) do
+ActiveRecord::Schema.define(version: 20150120195227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "costs", force: true do |t|
     t.integer  "trip_id"
-    t.string   "title",                       null: false
+    t.string   "title",                                null: false
     t.text     "notes"
-    t.float    "estimate"
-    t.integer  "quantity"
+    t.float    "estimate",             default: 0.0
+    t.integer  "quantity",             default: 1
     t.float    "final_total"
     t.integer  "priority"
-    t.boolean  "paid",        default: false, null: false
+    t.boolean  "paid",                 default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "trip_destinations_id"
   end
 
   add_index "costs", ["id"], name: "index_costs_on_id", using: :btree
+  add_index "costs", ["trip_destinations_id"], name: "index_costs_on_trip_destinations_id", using: :btree
   add_index "costs", ["trip_id"], name: "index_costs_on_trip_id", using: :btree
 
   create_table "destinations", force: true do |t|
-    t.integer  "trip_id"
     t.string   "title",      null: false
     t.text     "options"
     t.datetime "created_at"
@@ -41,7 +42,6 @@ ActiveRecord::Schema.define(version: 20141011080531) do
   end
 
   add_index "destinations", ["id"], name: "index_destinations_on_id", using: :btree
-  add_index "destinations", ["trip_id"], name: "index_destinations_on_trip_id", using: :btree
 
   create_table "task_lists", force: true do |t|
     t.integer  "owner_id"
@@ -61,6 +61,19 @@ ActiveRecord::Schema.define(version: 20141011080531) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "trip_destinations", force: true do |t|
+    t.integer  "trip_id",        null: false
+    t.integer  "destination_id", null: false
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "arrival"
+  end
+
+  add_index "trip_destinations", ["destination_id"], name: "index_trip_destinations_on_destination_id", using: :btree
+  add_index "trip_destinations", ["id"], name: "index_trip_destinations_on_id", using: :btree
+  add_index "trip_destinations", ["trip_id"], name: "index_trip_destinations_on_trip_id", using: :btree
 
   create_table "trips", force: true do |t|
     t.integer  "owner_id"
