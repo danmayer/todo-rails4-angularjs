@@ -1,8 +1,14 @@
 .ng-cloak(ng-init="init()")
+  div#calculator
+    p(data-no-turbolink)
+      | return to  
+      a(href="/dashboard" data-no-turbolink)
+        'trips dashboard
   div.panel.panel-info.trip-details
     div.panel-heading     
       editablespan(model="trip.title" on-ready="tripTitleEdited(trip.title)" input-class="form-control" span-class="trip-title")
-
+      button.btn.btn-danger.btn-xs.pull-right.trip-delete(type="button" ng-click="tripDelete(trip)")
+            span.glyphicon.glyphicon-ban-circle        
     form#new_cost(ng-submit="addCost()")
       .input-group
         input#costTitle.form-control.input-lg(type="text" autofocus="autofocus" placeholder="cost title" maxlength="255" ng-model="costTitle" data-non-blank)

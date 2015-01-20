@@ -1,4 +1,4 @@
-angular.module('todoApp').controller "TripController", ($scope, $timeout, $routeParams, Cost, Trip) ->
+angular.module('todoApp').controller "TripController", ($scope, $timeout, $routeParams, $location, Cost, Trip) ->
   $scope.sortMethod = 'priority'
   $scope.sortableEnabled = true
 
@@ -26,6 +26,13 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
   $scope.tripTitleEdited = (tripTitle) ->
     @tripService.update(@trip, title: tripTitle)
 
+  $scope.tripDelete = ->
+    result = confirm "Are you sure you want to remove this trip?"
+    
+    if result
+      @tripService.delete(@trip)
+      $location.url("/dashboard")
+  
   $scope.costEdited = (cost) ->
     @costService.update(cost, title: cost.title)
 
