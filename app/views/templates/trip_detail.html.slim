@@ -27,11 +27,16 @@
       .input-group
         input#costTitle.form-control.input-lg(type="text" autofocus="autofocus" placeholder="cost title" maxlength="255" ng-model="costTitle" data-non-blank)
         input#costEstimate.form-control.input-lg(type="text" placeholder="cost estimate" maxlength="50" ng-model="costEstimate" data-non-blank)
+        <select ng-model="costTripDestinations">
+          <option style="display:none" value="">associate cost to destination</option>
+          <option value="">none</option>
+          <option ng-repeat="destination in trip.trip_destinations" value="{{destination.id}}">{{destination.title}}</option>
+        </select>
         span.input-group-btn
           button.btn.btn-primary.btn-lg(type="submit") add
           
-    ul.list-group(ui-sortable="sortableCosts" ng-model="trip.costs" ui-sortable-ext="sortableEnabled")
-      li.list-group-item(ng-repeat="cost in trip.costs | orderBy:sortMethod" ng-class="{completed: cost.completed, draggable: sortMethod == 'priority'}")
+    ul.list-group(ui-sortable="sortableCosts" ng-model="trip.unassociated_costs" ui-sortable-ext="sortableEnabled")
+      li.list-group-item(ng-repeat="cost in trip.unassociated_costs | orderBy:sortMethod" ng-class="{completed: cost.completed, draggable: sortMethod == 'priority'}")
         .cost-completed
           input(type="checkbox" ng-model="cost.completed" ng-change="toggleCost(cost)")
         .cost-title
@@ -54,3 +59,16 @@
       li.list-group-item(ng-repeat="destination in trip.trip_destinations | orderBy:sortMethod" ng-class="{arrived: destination.arrival, draggable: sortMethod == 'arrival'}")
         .destination-title
           ' {{destination.id}}, {{destination.title}}, {{destination.arrival}}
+        ul.list-group(ui-sortable="sortableCosts" ng-model="destination.costs" ui-sortable-ext="sortableEnabled")
+          li.list-group-item(ng-repeat="cost in destination.costs | orderBy:sortMethod" ng-class="{completed: cost.completed, draggable: sortMethod == 'priority'}")
+            .cost-completed
+              input(type="checkbox" ng-model="cost.completed" ng-change="toggleCost(cost)")
+            .cost-title
+              editablespan(model="cost.title" on-ready="costEdited(cost)" input-class="form-control")
+            .cost-estimate
+              span.context
+                ' estimate
+              editablespan(model="cost.estimate" on-ready="costEdited(cost)" input-class="form-control")
+            .cost-buttons.pull-right
+              button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteCost(cost)")
+                span.glyphicon.glyphicon-ban-circle

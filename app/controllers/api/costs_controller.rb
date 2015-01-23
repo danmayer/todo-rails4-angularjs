@@ -38,6 +38,6 @@ class Api::CostsController < Api::BaseController
   end
 
   def safe_params
-    params.require(:cost).permit(:title, :notes, :estimate)
+    params.require(:cost).permit(:title, :notes, :estimate, :trip_destinations_id)
   end
 end
