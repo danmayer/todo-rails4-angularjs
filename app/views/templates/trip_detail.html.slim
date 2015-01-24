@@ -72,3 +72,8 @@
             .cost-buttons.pull-right
               button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteCost(cost)")
                 span.glyphicon.glyphicon-ban-circle
+                
+    ul.list-group()
+      li.list-group-item
+        div.total-trip-cost
+          ' Estimated trip cost: {{totalEstimatedCost}}

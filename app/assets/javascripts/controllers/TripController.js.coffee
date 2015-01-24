@@ -6,8 +6,9 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
     @costService = new Cost($routeParams.trip_id, serverErrorHandler)
     @tripService = new Trip(serverErrorHandler)
     @destinationService = new Destination(serverErrorHandler)
-    $scope.trip = @tripService.find $routeParams.trip_id
+    $scope.trip = @tripService.find $routeParams.trip_id, updateTotalEstimatedCost
     $scope.destinations = @destinationService.all()
+    $scope.totalEstimatedCost = 0.00
 
   $scope.addCost = ->
     raisePriorities()
@@ -19,6 +20,7 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
       $scope.trip.trip_destinations.filter( (el)->
         return parseInt(el.id)==parseInt(cost.trip_destinations_id)
       )[0].costs.unshift(cost)
+    updateTotalEstimatedCost()
     $scope.costTitle = ""
     $scope.costEstimate = ""
     $scope.costTripDestinations = ""
@@ -26,7 +28,14 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
   $scope.deleteCost = (cost) ->
     lowerPrioritiesBelow(cost)
     @costService.delete(cost)
-    $scope.trip.costs.splice($scope.trip.costs.indexOf(cost), 1)
+    if cost.trip_destinations_id==null
+      $scope.trip.unassociated_costs.splice($scope.trip.unassociated_costs.indexOf(cost), 1)
+    else
+      cost_collection = $scope.trip.trip_destinations.filter( (el)->
+        return parseInt(el.id)==parseInt(cost.trip_destinations_id)
+      )[0].costs
+      cost_collection.splice(cost_collection.indexOf(cost), 1)
+    updateTotalEstimatedCost()
 
   $scope.toggleCost = (cost) ->
     @costService.update(cost, paid: cost.paid)
@@ -42,7 +51,8 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
       $location.url("/dashboard")
   
   $scope.costEdited = (cost) ->
-    @costService.update(cost, title: cost.title)
+    @costService.update(cost, title: cost.title, estimate: cost.estimate)
+    updateTotalEstimatedCost()
 
   $scope.dueDatePicked = (task) ->
     @costService.update(task, due_date: task.due_date)
@@ -87,6 +97,24 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
   lowerPrioritiesBelow = (cost) ->
     angular.forEach costsBelow(cost), (t) ->
       t.priority -= 1
-
+      
   costsBelow = (cost) ->
     $scope.trip.costs.slice($scope.trip.costs.indexOf(cost), $scope.trip.costs.length)
+
+  updateTotalEstimatedCost = ->
+    if $scope.trip && $scope.trip.costs && $scope.trip.trip_destinations
+      destination_costs = $scope.trip.trip_destinations.map(
+        (el) ->
+          el.costs
+      )
+      destination_costs = destination_costs.concat.apply([], destination_costs)
+      all_costs = $scope.trip.unassociated_costs.concat(destination_costs)
+      $scope.totalEstimatedCost = all_costs.map(
+        (el)->
+          parseInt(el.estimate)
+      ).reduce(
+        (pv, cv) ->
+          pv + cv;
+        , 0);
+    else
+      $scope.totalEstimatedCost = 0.00

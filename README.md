@@ -1,19 +1,10 @@
-# got invoices etc going without any of the better setup...
-
-git checkout app/assets/javascripts/application.js                                                     
-action@railstestbox-16181:~/workspace/todo-rails4-angularjs(master*)$ mv app/assets/javascripts/todoApp.js.coffee public/                                                    
-action@railstestbox-16181:~/workspace/todo-rails4-angularjs(master*)$ mv app/assets/javascripts/services/ public/                                                            
-action@railstestbox-16181:~/workspace/todo-rails4-angularjs(master*)$ mv app/assets/javascripts/controllers/ public/                                                         
-action@railstestbox-16181:~/workspace/todo-rails4-angularjs(master*)$ mv app/assets/javascripts/directives/ public/    
-
-undo the above... then get the controller etc for the invoice in directory structure like above.
-
 # similar apps
 
 http://www.independenttraveler.com/travel-budget-calculator
 
 # TODO
 
+* rename destination options as it conflicts with activemodel::serializer
 * default values for trip
   * hotel, flight, visa, etc
 *  default values for cost
@@ -21,14 +12,13 @@ http://www.independenttraveler.com/travel-budget-calculator
 * profile setup
   * home country
   * default currency
-* trip sharing (private, restricted, public)
-* collaborators (trip editors) 
-* preload countries and cities
-* autofill cities on typing
+* improved design and UX
 * guest account creation flow (create a whole trip and calculations as a guest and then create account)
 * Start building out Rspec tests
-* rename destination options as it conflicts with activemodel::serializer
-* fix deletion from associated costs
+* preload countries and cities
+* autofill cities on typing
+* trip sharing (private, restricted, public)
+* collaborators (trip editors) 
 
 # Showcase of Rails 4 and AngularJS integration
 
