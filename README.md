@@ -4,7 +4,6 @@ http://www.independenttraveler.com/travel-budget-calculator
 
 # TODO
 
-* rename destination options as it conflicts with activemodel::serializer
 * default values for trip
   * hotel, flight, visa, etc
 *  default values for cost

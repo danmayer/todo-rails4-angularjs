@@ -9,8 +9,22 @@
 user = User.first
 trip = user.trips.first
 
-if Destination.count == 0
-  Destination.create([{title: 'Chicago'}, {title: 'Japan'}, {title: 'Asia'}, {title: 'Vietnam'}])
+destinations = [
+  {title: 'Japan', default_options: {visa: 100 }.to_json},
+  {title: 'South Korea', default_options: {visa: 100 }.to_json},
+  {title: 'Beijing', default_options: {visa: 100 }.to_json},
+  {title: 'Hong Kong', default_options: {visa: 100 }.to_json},
+  {title: 'Beijing', default_options: {visa: 100 }.to_json},
+  {title: 'Vietnam', default_options: {visa: 100 }.to_json},
+  {title: 'Malaysia', default_options: {visa: 100 }.to_json},
+  {title: 'Cambodia', default_options: {visa: 100 }.to_json},
+  {title: 'Thailand', default_options: {visa: 100 }.to_json},
+  ]
+
+destinations.each do |destination|
+  unless Destination.where(title: destination[:title]).any?
+    Destination.create(destination)
+  end
 end
 
 if user.trips.length == 0
