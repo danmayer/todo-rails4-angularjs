@@ -10,7 +10,8 @@ It is also being built just as a good excuse to learning new technologies.
     bundle exec rake db:create
     bundle exec rake db:migrate db:test:prepare
     bundle exec rake
-
+    
+    rails s
 
 # Similar apps
 
@@ -23,6 +24,11 @@ http://www.independenttraveler.com/travel-budget-calculator
 *  default values for cost
   * estimate, quanity, etc 
 * currency switcher in header
+  * looking at money gem and money-rails
+  * http://www.xe.com/?r=
+  * http://stackoverflow.com/questions/1019939/ruby-on-rails-best-method-of-handling-currency-money
+  * https://github.com/RubyMoney/money
+  * https://github.com/RubyMoney/money-rails
 * improved design and UX
 * guest account creation flow (create a whole trip and calculations as a guest and then create account)
 * Start building out tests
@@ -30,6 +36,7 @@ http://www.independenttraveler.com/travel-budget-calculator
 * autofill cities on typing
 * trip sharing (private, restricted, public)
 * collaborators (trip editors)
+* swagger api docs
 * fix page load flickering (ng-cloak not doing what I expect ask Angular club)
 * setup heroku
 * setup CI (try a new CI service)
