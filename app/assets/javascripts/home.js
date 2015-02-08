@@ -1,5 +1,4 @@
 
-
 $(document).on('page:load', function() {
   $('[ng-app]').each( function(){
     module = $(this).attr('ng-app');

@@ -22,16 +22,15 @@ http://www.independenttraveler.com/travel-budget-calculator
   * hotel, flight, visa, etc
 *  default values for cost
   * estimate, quanity, etc 
-* profile setup
-  * home country
-  * default currency  
+* currency switcher in header
 * improved design and UX
 * guest account creation flow (create a whole trip and calculations as a guest and then create account)
-* Start building out Rspec tests
+* Start building out tests
 * preload countries and cities
 * autofill cities on typing
 * trip sharing (private, restricted, public)
-* collaborators (trip editors) 
+* collaborators (trip editors)
+* fix page load flickering (ng-cloak not doing what I expect ask Angular club)
 
 # Thanks for the help
 

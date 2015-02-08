@@ -1,5 +1,5 @@
 Todo::Application.routes.draw do
-  devise_for :users  
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   namespace :api, defaults: {format: :json} do
     devise_scope :user do
@@ -20,7 +20,7 @@ Todo::Application.routes.draw do
   end
 
   root :to => "home#index"
-  
+
   get '/calc' => "home#calculator"
   get '/dashboard' => 'templates#index'
   get '/task_lists/:id' => 'templates#index'

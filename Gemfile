@@ -15,6 +15,8 @@ gem 'slim'
 gem 'active_model_serializers'
 gem 'jquery-ui-rails'
 gem 'acts_as_list'
+# looking at money and money-rails to store values
+# gem 'money'
 
 group :doc do
   gem 'sdoc', require: false

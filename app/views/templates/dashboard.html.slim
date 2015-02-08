@@ -1,5 +1,5 @@
 div#app(ng-app="todoApp")
-  div#calculator
+  div#calculator.ngCloak
     p(data-no-turbolink)
       | estimate your travel costs with our, 
       a(href="/calc" data-no-turbolink)
@@ -10,7 +10,7 @@ div#app(ng-app="todoApp")
     div.panel.panel-default.dashboard-list
       div.panel-heading 
         h4 Your trips
-      ul.list-group(ng-show="trips == 0")
+      ul.list-group(ng-show="trips.length == 0")
         li.list-group-item
           ' You haven't created any trips yet.      
       ul.list-group
