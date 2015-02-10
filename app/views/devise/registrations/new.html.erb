@@ -3,7 +3,13 @@
 
   <%= devise_error_messages! %>
 
-  <%= f.email_field :email, :autofocus => true, :placeholder => "Email address", :class => "form-control" %>
+  <%= f.email_field :email, :autofocus => true, :placeholder => "Email
+  address", :class => "form-control" %>
+
+  <%= f.label :home_country, :class => "form-label" %> <i></i><br/>
+  <%= f.text_field :home_country, :placeholder => "USA", :class => "form-control"  %>
+  
+  <%= f.text_field :default_currency, :placeholder => 'USD', :class => "form-control"  %>
   <%= f.password_field :password, :placeholder => "Password", :class => "form-control" %>
   <%= f.password_field :password_confirmation, :placeholder => "Password confirmation", :class => "form-control" %>
 
