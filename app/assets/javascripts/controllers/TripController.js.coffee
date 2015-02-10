@@ -14,7 +14,7 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
     raisePriorities()
     cost = @costService.create(title: $scope.costTitle, estimate: $scope.costEstimate, trip_destinations_id: $scope.costTripDestinations)
     cost.priority = 1
-    if cost.trip_destinations_id==null
+    if $scope.isUndefinedOrNull(cost.trip_destinations_id)
       $scope.trip.unassociated_costs.unshift(cost)
     else
       $scope.trip.trip_destinations.filter( (el)->
@@ -28,7 +28,7 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
   $scope.deleteCost = (cost) ->
     lowerPrioritiesBelow(cost)
     @costService.delete(cost)
-    if cost.trip_destinations_id==null
+    if $scope.isUndefinedOrNull(cost.trip_destinations_id)
       $scope.trip.unassociated_costs.splice($scope.trip.unassociated_costs.indexOf(cost), 1)
     else
       cost_collection = $scope.trip.trip_destinations.filter( (el)->
@@ -77,6 +77,9 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
       $scope.sortableEnabled = true
     else
       $scope.sortableEnabled = false
+
+  $scope.isUndefinedOrNull = (val) -> 
+    (angular.isUndefined(val) || val == null)
 
   $scope.dueDateNullLast = (task) ->
     task.due_date ? '2999-12-31'
