@@ -38,7 +38,6 @@ http://www.independenttraveler.com/travel-budget-calculator
 * collaborators (trip editors)
 * swagger api docs
 * fix page load flickering (ng-cloak not doing what I expect ask Angular club)
-* setup heroku
 * setup CI (try a new CI service)
 * setup continuous deployment
 
