@@ -2,7 +2,10 @@
 
 This app helps estimate international long term travel costs. It helps cover build a good estimate of long term travel based on location, days abroad, and lvel of comfort, and daily spending level.
 
-It is also being built just as a good excuse to learning new technologies.
+It is also being built just as a good excuse to learning new
+technologies.
+
+[ ![Codeship Status for danmayer/travel_calculator](https://codeship.com/projects/a35ff250-97b7-0132-f770-6a66c6b56914/status?branch=master)](https://codeship.com/projects/63202)
 
 # Getting started
 
@@ -39,7 +42,6 @@ It is also being built just as a good excuse to learning new technologies.
 * collaborators (trip editors)
 * swagger api docs
 * fix page load flickering (ng-cloak not doing what I expect ask Angular club)
-* setup continuous deployment
 
 # Thanks for the help
 
