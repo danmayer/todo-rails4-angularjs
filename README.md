@@ -15,7 +15,8 @@ It is also being built just as a good excuse to learning new technologies.
 
 # Similar apps
 
-http://www.independenttraveler.com/travel-budget-calculator
+* [independent traveler calculator](http://www.independenttraveler.com/travel-budget-calculator)
+
 
 # TODO
 

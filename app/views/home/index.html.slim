@@ -2,18 +2,28 @@ div
 
 h3 Love to travel?
 
+p We are building an app that will help calculate your travel costs. If you have a big trip coming up sign up now, so you can learn more when the app is ready.
+
 .panel.panel-default
   .panel-heading
-    h3.panel-title Want to beta-test?
+    h3.panel-title Sign Up
 
   .panel-body
-    p signed up, and I will let you know when we are ready for testing. 
-    form#sign_up
-      .input-group
-        input#email.form-control.input-lg(type="text" autofocus="autofocus" placeholder="you@yourmail.com" maxlength="255" data-non-blank)
+    p I will let you know when we are ready for feedback. 
 
-h3 Coming Soon
+    / Begin MailChimp Signup Form
+    div#mc_embed_signup
+      form.validate#mc-embedded-subscribe-form(action="//picoappz.us10.list-manage.com/subscribe/post?u=5b66a725371ebccef646cdb7b&amp;id=c9c0ae438a" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate)
 
-p We are building apps that will help calculate your travel costs. If you have a big trip coming up sign up now, so you can learn more when the app is ready.
+        div#mc_embed_signup_scroll
+          label(for="mce-EMAIL")Subscribe for updates
+          input.email#mce-EMAIL(type="email" value="" name="EMAIL" placeholder="email address" required)
+          / real people should not fill this in and expect good things - do not remove this or risk form bots
+          div(style="position: absolute; left: -5000px;")
+            input(type="text" name="b_5b66a725371ebccef646cdb7b_c9c0ae438a" tabindex="-1" value="")
+          div.clear
+          input.button#mc-embedded-subscribe(type="submit" value="Subscribe" name="subscribe")
+
+    / End mc_embed_signup
 
 p Thanks! -Dan
