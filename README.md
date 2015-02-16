@@ -39,7 +39,6 @@ It is also being built just as a good excuse to learning new technologies.
 * collaborators (trip editors)
 * swagger api docs
 * fix page load flickering (ng-cloak not doing what I expect ask Angular club)
-* setup CI (try a new CI service)
 * setup continuous deployment
 
 # Thanks for the help
