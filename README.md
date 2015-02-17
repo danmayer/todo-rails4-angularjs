@@ -55,3 +55,4 @@ technologies.
 This is a toy app for me to work on to learn some new technologies. So I am sure I will be cribbing info from various tutorials, open source, and books. I wanted to give a shout out to some resources that helped me along the way.
 
 * [todo-rails4-angularjs](https://github.com/mkwiatkowski/todo-rails4-angularjs)
+* [angucomplete-alt](https://github.com/ghiden/angucomplete-alt)
