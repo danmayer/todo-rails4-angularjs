@@ -2,16 +2,26 @@ class Api::TripDestinationsController < Api::BaseController
   before_action :check_owner, only: [:show, :update, :destroy]
   
   def index
-    render json: current_user.trips
+    render json: trip.trip_destinations
   end
 
   def show
-    render json: trip
+    render json: trip_destination
   end
 
   def create
-    trip = current_user.trips.create!(safe_params)
-    render json: trip
+    destination_params = safe_params
+    destination_params[:arrival] = begin
+                                     Time.parse(destination_params[:arrival])
+                                   rescue
+                                     Time.now
+                                   end
+    #TODO we need to pass destination_id not title
+    destination_id = Destination.find_by(title: destination_params[:title]).try(:id)
+    destination_params.delete(:title)
+    destination_params[:destination_id] = destination_id
+    trip_destination = trip.trip_destinations.create!(destination_params)
+    render json: trip_destination
   end
 
   def update
@@ -30,10 +40,14 @@ class Api::TripDestinationsController < Api::BaseController
   end
 
   def trip
-    @trip ||= Trip.find(params[:id])    
+    @trip ||= current_user.trips.find(params[:trip_id])    
+  end
+
+  def trip_destination
+    @trip_destination ||= trip.trip_destinations.find(params[:id])
   end
 
   def safe_params
-    params.require(:destination).permit(:title)
+    params.require(:tripDestination).permit(:title, :arrival)
   end
 end

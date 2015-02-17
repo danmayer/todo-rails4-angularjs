@@ -1,4 +1,4 @@
-angular.module('todoApp').controller "TripController", ($scope, $timeout, $routeParams, $location, Cost, Trip, Destination) ->
+angular.module('todoApp').controller "TripController", ($scope, $timeout, $routeParams, $location, Cost, Trip, Destination, TripDestination) ->
   $scope.sortMethod = 'priority'
   $scope.sortableEnabled = true
 
@@ -6,9 +6,15 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
     @costService = new Cost($routeParams.trip_id, serverErrorHandler)
     @tripService = new Trip(serverErrorHandler)
     @destinationService = new Destination(serverErrorHandler)
+    @tripDestinationService = new TripDestination($routeParams.trip_id, serverErrorHandler)
     $scope.trip = @tripService.find $routeParams.trip_id, updateTotalEstimatedCost
     $scope.destinations = @destinationService.all()
     $scope.totalEstimatedCost = 0.00
+
+  $scope.addDestination = ->
+    console.log("add destination")
+    tripDestination = @tripDestinationService.create(title: $scope.destinationTitle, arrival: $scope.destinationArrival)
+    $scope.trip = @tripService.find $routeParams.trip_id, updateTotalEstimatedCost
 
   $scope.addCost = ->
     raisePriorities()
