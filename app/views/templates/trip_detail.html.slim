@@ -13,7 +13,7 @@
       'add trip destination
     form#new_cost(ng-submit="addDestination()")
       .input-group
-        <select ng-model="traveldestinations">
+        <select ng-model="destinationTitle">
           <option style="display:none" value="">select a destination</option>
           <option ng-repeat="destination in destinations" value="{{destination.id}}">{{destination.title}}</option>
         </select>

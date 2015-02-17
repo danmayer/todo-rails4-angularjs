@@ -28,4 +28,3 @@ angular.module('todoApp').factory 'Trip', ($resource, $http) ->
         successHandler?(trip)
         trip), 
        @errorHandler)
-
