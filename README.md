@@ -39,6 +39,7 @@ technologies.
 * later all airports and cities
   * http://ourairports.com/data/
   * http://datahub.io/dataset/open-flights
+  * autocomplete cities in a country with [angular google places autocomplete](http://ngmodules.org/modules/ngAutocomplete), other advanced places options.
 * autofill cities on typing
 * trip sharing (private, restricted, public)
 * collaborators (trip editors)

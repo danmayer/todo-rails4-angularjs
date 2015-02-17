@@ -1,3 +1,3 @@
 class DestinationSerializer < ActiveModel::Serializer
-  attributes :id, :title, :options
+  attributes :id, :title, :default_options
 end
