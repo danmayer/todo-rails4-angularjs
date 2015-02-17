@@ -20,7 +20,6 @@ technologies.
 
 * [independent traveler calculator](http://www.independenttraveler.com/travel-budget-calculator)
 
-
 # TODO
 
 * default values for trip
@@ -36,12 +35,19 @@ technologies.
 * improved design and UX
 * guest account creation flow (create a whole trip and calculations as a guest and then create account)
 * Start building out tests
-* preload countries and cities
+* autocomplete countries (ES maybe) 
+* later all airports and cities
+  * http://ourairports.com/data/
+  * http://datahub.io/dataset/open-flights
 * autofill cities on typing
 * trip sharing (private, restricted, public)
 * collaborators (trip editors)
 * swagger api docs
 * fix page load flickering (ng-cloak not doing what I expect ask Angular club)
+
+# Improvements
+
+* [better mailchimp](http://designshack.net/articles/css/custom-mailchimp-email-signup-form/)
 
 # Thanks for the help
 

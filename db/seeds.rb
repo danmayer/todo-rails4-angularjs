@@ -1,30 +1,42 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'net/http'
+require "net/https"
 
 user = User.first
 trip = user.trips.first
 
-destinations = [
-  {title: 'Japan', default_options: {visa: 100 }.to_json},
-  {title: 'South Korea', default_options: {visa: 100 }.to_json},
-  {title: 'Beijing', default_options: {visa: 100 }.to_json},
-  {title: 'Hong Kong', default_options: {visa: 100 }.to_json},
-  {title: 'Beijing', default_options: {visa: 100 }.to_json},
-  {title: 'Vietnam', default_options: {visa: 100 }.to_json},
-  {title: 'Malaysia', default_options: {visa: 100 }.to_json},
-  {title: 'Cambodia', default_options: {visa: 100 }.to_json},
-  {title: 'Thailand', default_options: {visa: 100 }.to_json},
-  ]
+destinations_defaults = {
+  visa: 100,
+  flight: 1000
+}
 
-destinations.each do |destination|
-  unless Destination.where(title: destination[:title]).any?
-    Destination.create(destination)
+def get_country_json
+  url = 'https://raw.githubusercontent.com/mledoze/countries/master/countries.json'
+  uri = URI.parse(url)
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  
+  request = Net::HTTP::Get.new(uri.request_uri)
+  
+  response = http.request(request)
+  JSON.parse(response.body)
+end
+
+country_json = get_country_json
+
+country_json.each do |destination|
+  name = destination['name']['common']
+  if Destination.where(title: name).any?
+    Destination.where(title: name).first.destroy
   end
+  destination_data = {
+    title: name,
+    default_options: destinations_defaults.to_json
+  }
+  Destination.create(destination_data)
 end
 
 if user.trips.length == 0
@@ -42,6 +54,6 @@ end
 if trip.trip_destinations.length == 0
   trip.trip_destinations.create([
     {destination_id: Destination.find_by(title: 'Vietnam').id, notes: 'the best', arrival: 2.days.ago},
-    {destination_id: Destination.find_by(title: 'Asia').id, notes: 'not so much a destination', arrival: 1.days.ago}
+    {destination_id: Destination.find_by(title: 'Aruba').id, notes: 'honeymoon!', arrival: 1.days.ago}
   ])
 end
