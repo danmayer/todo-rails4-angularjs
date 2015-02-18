@@ -23,16 +23,19 @@ technologies.
 # TODO
 
 * default values for trip
-  * hotel, flight, visa, etc
+  * luggage, clothes, etc
 *  default values for cost
-  * estimate, quanity, etc 
+  * estimate, quanity, etc
+* default values for destination
+  * hotel, flight, visa, food, big ticket items for coutries (Angkor passes)
+* integrate into picoappz  
 * currency switcher in header
   * looking at money gem and money-rails
   * http://www.xe.com/?r=
   * http://stackoverflow.com/questions/1019939/ruby-on-rails-best-method-of-handling-currency-money
   * https://github.com/RubyMoney/money
   * https://github.com/RubyMoney/money-rails
-* improved design and UX
+* improved design and UX (especially autocomplete box)
 * guest account creation flow (create a whole trip and calculations as a guest and then create account)
 * Start building out tests
 * autocomplete countries (ES maybe) 

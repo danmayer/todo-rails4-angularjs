@@ -13,7 +13,7 @@
       'add trip destination
     form#new_cost(ng-submit="addDestination()")
       .input-group
-        angucomplete-alt#destinationTitle(placeholder="Destination country" pause="100" selected-object="searchString" local-data="countries" search-fields="title" title-field="title" minlength="1" input-class="form-control input-lg" field-required)
+        angucomplete-alt#destinationTitle(placeholder="Destination country" pause="100" selected-object="searchString" local-data="countries" search-fields="title" title-field="title" minlength="1" input-class="form-control input-lg" match-class="highlight" field-required)
         input#destinationArrival.form-control.input-lg(type="text" placeholder="arrival date" maxlength="50" ng-model="destinationArrival" data-non-blank)
         span.input-group-btn
           button.btn.btn-primary.btn-lg(type="submit") add
