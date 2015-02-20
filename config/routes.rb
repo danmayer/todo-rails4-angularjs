@@ -3,6 +3,7 @@ Todo::Application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     devise_scope :user do
+      post 'registrations' => 'registrations#create', :as => 'register'
       resource :session, only: [:create, :destroy]
     end
     
