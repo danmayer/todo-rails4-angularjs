@@ -22,6 +22,8 @@ technologies.
 
 # TODO
 
+* upgrade Rails
+* upgrade Devise
 * default values for trip
   * luggage, clothes, etc
 *  default values for cost

@@ -17,7 +17,7 @@ gem 'jquery-ui-rails'
 gem 'acts_as_list'
 # looking at money and money-rails to store values
 # gem 'money'
-# upgrade rails and devise first
+# upgrade rails and devise first and wait till I care about having an admin
 #gem 'activeadmin', github: 'activeadmin'
 
 group :doc do
