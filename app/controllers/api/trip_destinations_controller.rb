@@ -11,11 +11,7 @@ class Api::TripDestinationsController < Api::BaseController
 
   def create
     destination_params = safe_params
-    destination_params[:arrival] = begin
-                                     Time.parse(destination_params[:arrival])
-                                   rescue
-                                     Time.now
-                                   end
+    destination_params[:arrival] = parsed_arrival
     trip_destination = trip.trip_destinations.create!(destination_params)
     render json: trip_destination
   end
@@ -31,6 +27,14 @@ class Api::TripDestinationsController < Api::BaseController
   end
 
   private
+  def parsed_arrival
+    begin
+      Time.parse(destination_params[:arrival])
+    rescue
+      Time.now
+    end
+  end
+  
   def check_owner
     permission_denied if current_user != trip.owner
   end
@@ -44,6 +48,6 @@ class Api::TripDestinationsController < Api::BaseController
   end
 
   def safe_params
-    params.require(:tripDestination).permit(:destination_id, :arrival)
+    params.require(:tripDestination).permit(:destination_id, :arrival, :days)
   end
 end

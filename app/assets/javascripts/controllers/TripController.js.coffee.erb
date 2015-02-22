@@ -17,10 +17,10 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
 
   $scope.addDestination = ->
     console.log("add destination")
-    tripDestination = @tripDestinationService.create(destination_id: $scope.destinationDestinationId, arrival: $scope.destinationArrival)
+    tripDestination = @tripDestinationService.create(destination_id: $scope.destinationDestinationId, days: $scope.destinationDays)
     $scope.searchStr = ''
     $scope.destinationDestinationId = ""
-    $scope.destinationArrival = ""
+    $scope.destinationDays = ""
     $('#destinationTitle_value').val('')
     $scope.trip = @tripService.find $routeParams.trip_id, updateTotalEstimatedCost
 

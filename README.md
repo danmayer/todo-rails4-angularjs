@@ -21,8 +21,7 @@ technologies.
 * [independent traveler calculator](http://www.independenttraveler.com/travel-budget-calculator)
 
 # TODO
-* default values for trip
-  * luggage, clothes, etc
+* make days a required trip_destinations field
 *  default values for cost
   * estimate, quanity, etc
 * default values for destination
