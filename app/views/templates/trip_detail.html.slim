@@ -1,63 +1,38 @@
 .ng-cloak(ng-init="init()")
-  div#calculator
-    p(data-no-turbolink)
-      | return to  
-      a(href="/dashboard" data-no-turbolink)
-        'trips dashboard
-  div.panel.panel-info.trip-details
-    div.panel-heading     
-      editablespan(model="trip.title" on-ready="tripTitleEdited(trip.title)" input-class="form-control" span-class="trip-title")
-      button.btn.btn-danger.btn-xs.pull-right.trip-delete(type="button" ng-click="tripDelete(trip)")
-            span.glyphicon.glyphicon-ban-circle
-    h3.add-trip-destination
-      'add trip destination
-    form#new_cost(ng-submit="addDestination()")
-      .input-group
-        angucomplete-alt#destinationTitle(placeholder="Destination country" pause="100" selected-object="searchString" local-data="countries" search-fields="title" title-field="title" minlength="1" input-class="form-control input-lg" match-class="highlight" field-required)
-        input#destinationArrival.form-control.input-lg(type="text" placeholder="arrival date" maxlength="50" ng-model="destinationArrival" data-non-blank)
-        span.input-group-btn
-          button.btn.btn-primary.btn-lg(type="submit") add
-          
-    h3.add-trip-cost
-      'add trip cost
-    form#new_cost(ng-submit="addCost()")
-      .input-group
-        input#costTitle.form-control.input-lg(type="text" autofocus="autofocus" placeholder="cost title" maxlength="255" ng-model="costTitle" data-non-blank)
-        input#costEstimate.form-control.input-lg(type="text" placeholder="cost estimate" maxlength="50" ng-model="costEstimate" data-non-blank)
-        <select ng-model="costTripDestinations">
-          <option style="display:none" value="">associate cost to destination</option>
-          <option value="">none</option>
-          <option ng-repeat="destination in trip.trip_destinations" value="{{destination.id}}">{{destination.title}}</option>
-        </select>
-        span.input-group-btn
-          button.btn.btn-primary.btn-lg(type="submit") add
-          
-    ul.list-group(ui-sortable="sortableCosts" ng-model="trip.unassociated_costs" ui-sortable-ext="sortableEnabled")
-      li.list-group-item(ng-repeat="cost in trip.unassociated_costs | orderBy:sortMethod" ng-class="{completed: cost.completed, draggable: sortMethod == 'priority'}")
-        .cost-completed
-          input(type="checkbox" ng-model="cost.completed" ng-change="toggleCost(cost)")
-        .cost-title
-          editablespan(model="cost.title" on-ready="costEdited(cost)" input-class="form-control")
-        .cost-estimate
-          span.context
-            ' estimate
-          editablespan(model="cost.estimate" on-ready="costEdited(cost)" input-class="form-control")
-        .cost-buttons.pull-right
-          button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteCost(cost)")
-            span.glyphicon.glyphicon-ban-circle
-          calendar(model="cost.due_date" on-change="dueDatePicked(cost)")
-            button.btn.btn-info.btn-xs.pull-right(type="button")
-              span.glyphicon.glyphicon-time
-        .cost-due-date(ng-show="cost.due_date")
-          small
-            ' Due date: {{cost.due_date}}
-            
-    ul.list-group(ui-sortable="sortableDestinations" ng-model="trip.trip_destinations" ui-sortable-ext="sortableEnabled")
-      li.list-group-item(ng-repeat="destination in trip.trip_destinations | orderBy:sortMethod" ng-class="{arrived: destination.arrival, draggable: sortMethod == 'arrival'}")
-        .destination-title
-          ' {{destination.id}}, {{destination.title}}, {{destination.arrival}}
-        ul.list-group(ui-sortable="sortableCosts" ng-model="destination.costs" ui-sortable-ext="sortableEnabled")
-          li.list-group-item(ng-repeat="cost in destination.costs | orderBy:sortMethod" ng-class="{completed: cost.completed, draggable: sortMethod == 'priority'}")
+    div.col-md-8
+      div#calculator
+        p(data-no-turbolink)
+          | return to  
+          a(href="/dashboard" data-no-turbolink)
+            'trips dashboard
+      div.panel.panel-info.trip-details
+        div.panel-heading     
+          editablespan(model="trip.title" on-ready="tripTitleEdited(trip.title)" input-class="form-control" span-class="trip-title")
+          button.btn.btn-danger.btn-xs.pull-right.trip-delete(type="button" ng-click="tripDelete(trip)")
+	    span.glyphicon.glyphicon-ban-circle
+         h3.add-trip-destination
+           'add trip destination
+        form#new_cost(ng-submit="addDestination()")
+          .input-group
+            angucomplete-alt#destinationTitle(placeholder="Destination country" pause="100" selected-object="searchString" local-data="countries" search-fields="title" title-field="title" minlength="1" input-class="form-control input-lg" match-class="highlight" field-required)
+            input#destinationArrival.form-control.input-lg(type="text" placeholder="arrival date" maxlength="50" ng-model="destinationArrival" data-non-blank)
+            span.input-group-btn
+              button.btn.btn-primary.btn-lg(type="submit") add
+        h3.add-trip-cost
+          'add trip cost
+        form#new_cost(ng-submit="addCost()")
+          .input-group
+            input#costTitle.form-control.input-lg(type="text" autofocus="autofocus" placeholder="cost title" maxlength="255" ng-model="costTitle" data-non-blank)
+            input#costEstimate.form-control.input-lg(type="text" placeholder="cost estimate" maxlength="50" ng-model="costEstimate" data-non-blank)
+            <select ng-model="costTripDestinations">
+              <option style="display:none" value="">associate cost to destination</option>
+              <option value="">none</option>
+              <option ng-repeat="destination in trip.trip_destinations" value="{{destination.id}}">{{destination.title}}</option>
+            </select>
+            span.input-group-btn
+              button.btn.btn-primary.btn-lg(type="submit") add
+        ul.list-group(ui-sortable="sortableCosts" ng-model="trip.unassociated_costs" ui-sortable-ext="sortableEnabled")
+          li.list-group-item(ng-repeat="cost in trip.unassociated_costs | orderBy:sortMethod" ng-class="{completed: cost.completed, draggable: sortMethod == 'priority'}")
             .cost-completed
               input(type="checkbox" ng-model="cost.completed" ng-change="toggleCost(cost)")
             .cost-title
@@ -69,8 +44,32 @@
             .cost-buttons.pull-right
               button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteCost(cost)")
                 span.glyphicon.glyphicon-ban-circle
-                
-    ul.list-group()
-      li.list-group-item
-        div.total-trip-cost
-          ' Estimated trip cost: {{totalEstimatedCost}}
+              calendar(model="cost.due_date" on-change="dueDatePicked(cost)")
+                button.btn.btn-info.btn-xs.pull-right(type="button")
+                  span.glyphicon.glyphicon-time
+            .cost-due-date(ng-show="cost.due_date")
+              small
+                ' Due date: {{cost.due_date}}
+        ul.list-group(ui-sortable="sortableDestinations" ng-model="trip.trip_destinations" ui-sortable-ext="sortableEnabled")
+          li.list-group-item(ng-repeat="destination in trip.trip_destinations | orderBy:sortMethod" ng-class="{arrived: destination.arrival, draggable: sortMethod == 'arrival'}")
+            .destination-title
+              ' {{destination.id}}, {{destination.title}}, {{destination.arrival}}
+            ul.list-group(ui-sortable="sortableCosts" ng-model="destination.costs" ui-sortable-ext="sortableEnabled")
+              li.list-group-item(ng-repeat="cost in destination.costs | orderBy:sortMethod" ng-class="{completed: cost.completed, draggable: sortMethod == 'priority'}")
+                .cost-completed
+                  input(type="checkbox" ng-model="cost.completed" ng-change="toggleCost(cost)")
+                .cost-title
+                  editablespan(model="cost.title" on-ready="costEdited(cost)" input-class="form-control")
+                .cost-estimate
+                  span.context
+                    ' estimate
+                  editablespan(model="cost.estimate" on-ready="costEdited(cost)" input-class="form-control")
+                .cost-buttons.pull-right
+                  button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteCost(cost)")
+                    span.glyphicon.glyphicon-ban-circle
+    div.col-md-4
+      h3 Costs
+      ul.list-group
+        li.list-group-item
+          div.total-trip-cost
+            ' Estimated trip cost: {{totalEstimatedCost}}	    

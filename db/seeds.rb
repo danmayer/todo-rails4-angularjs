@@ -40,7 +40,7 @@ country_json.each do |destination|
 end
 
 if user.trips.length == 0
-  trip ||= user.trips.create(title: 'SE Asia', begin_date: 2.weeks.ago)
+  trip ||= user.trips.create(title: 'SE Asia', begin_date: 2.weeks.from_now)
 end
 
 if trip.costs.length == 0

@@ -21,16 +21,13 @@ technologies.
 * [independent traveler calculator](http://www.independenttraveler.com/travel-budget-calculator)
 
 # TODO
-
-* upgrade Rails
-* upgrade Devise
 * default values for trip
   * luggage, clothes, etc
 *  default values for cost
   * estimate, quanity, etc
 * default values for destination
   * hotel, flight, visa, food, big ticket items for coutries (Angkor passes)
-* integrate into picoappz  
+* integrate into picoappz.com
 * currency switcher in header
   * looking at money gem and money-rails
   * http://www.xe.com/?r=
@@ -39,6 +36,8 @@ technologies.
   * https://github.com/RubyMoney/money-rails
 * improved design and UX (especially autocomplete box)
 * guest account creation flow (create a whole trip and calculations as a guest and then create account)
+* upgrade Rails
+* upgrade Devise
 * Start building out tests
 * autocomplete countries (ES maybe) 
 * later all airports and cities
