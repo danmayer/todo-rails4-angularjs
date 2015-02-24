@@ -136,4 +136,4 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
     else
       $scope.totalEstimatedCost = 0.00
 
-  $scope.countries = <%= Destination.all.to_json(:exclude => [:default_options]) %>
+  $scope.countries = <%= Destination.all.to_json(:except => [:default_options]) %>
