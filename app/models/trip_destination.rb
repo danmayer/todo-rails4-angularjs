@@ -17,7 +17,13 @@ class TripDestination < ActiveRecord::Base
     initial_costs.each do |cost|
       cost.merge!(trip_destinations_id: self.id)
     end
-    Rails.logger.info initial_costs.inspect
+    initial_costs << {
+      title: "daily spending money",
+      notes: "Daily spend (food, drinks, tourist sites, souvenirs, and local transport)",
+      estimate: destination.default_options['cost_per_day'],
+      quantity: self.days,
+      trip_destinations_id: self.id
+    }
     trip.costs.create(initial_costs)
     self.save
   end

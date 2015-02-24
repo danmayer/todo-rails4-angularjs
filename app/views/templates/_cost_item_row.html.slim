@@ -1,0 +1,15 @@
+.cost-completed
+  input(type="checkbox" ng-model="cost.completed" ng-change="toggleCost(cost)")
+.cost-title
+  editablespan(model="cost.title" on-ready="costEdited(cost)" input-class="form-control")
+.cost-estimate
+  span.context
+    ' estimate
+  editablespan(model="cost.estimate" on-ready="costEdited(cost)" input-class="form-control")
+.cost-quantity
+  span.context
+    ' * quantity
+  editablespan(model="cost.quantity" on-ready="costEdited(cost)" input-class="form-control")
+.cost-buttons.pull-right
+  button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteCost(cost)")
+    span.glyphicon.glyphicon-ban-circle

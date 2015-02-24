@@ -21,22 +21,25 @@ technologies.
 * [independent traveler calculator](http://www.independenttraveler.com/travel-budget-calculator)
 
 # TODO
+
 * make days a required trip_destinations field
+* chart breakdown of costs
+* breakdown estimated cost by country.
+* fix page load flickering (ng-cloak not doing what I expect ask Angular club)
 * default values for destination
   * dynamic hotel, flight, visa, food, big ticket items for coutries (Angkor passes)
 * integrate into picoappz.com
+* improved design and UX (especially autocomplete box)
+* guest account creation flow (create a whole trip and calculations as a guest and then create account)
 * currency switcher in header
   * looking at money gem and money-rails
   * http://www.xe.com/?r=
   * http://stackoverflow.com/questions/1019939/ruby-on-rails-best-method-of-handling-currency-money
   * https://github.com/RubyMoney/money
   * https://github.com/RubyMoney/money-rails
-* improved design and UX (especially autocomplete box)
-* guest account creation flow (create a whole trip and calculations as a guest and then create account)
 * upgrade Rails
 * upgrade Devise
 * Start building out tests
-* autocomplete countries (ES maybe) 
 * later all airports and cities
   * http://ourairports.com/data/
   * http://datahub.io/dataset/open-flights
@@ -45,11 +48,11 @@ technologies.
 * trip sharing (private, restricted, public)
 * collaborators (trip editors)
 * swagger api docs
-* fix page load flickering (ng-cloak not doing what I expect ask Angular club)
+
 
 # Refactoring
 
-* add [slim partials](http://www.rubydoc.info/gems/slim/frames)
+* countries are rendered into js, that should be a remote json call. Currently the assets cache
 
 # Improvements
 

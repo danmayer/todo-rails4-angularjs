@@ -6,4 +6,5 @@ module ApplicationHelper
   def todo_app?
     controller.action_name != 'calculator'
   end
+
 end

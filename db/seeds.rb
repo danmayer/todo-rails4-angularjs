@@ -26,8 +26,9 @@ destinations_defaults = {
       notes: "You might need some immunizations, sometimes health insurance covers this.",
       estimate: 100.00,
       quantity: 1
-    },
-  ]
+    }
+  ],
+  cost_per_day: 45.00
 }
 
 def get_country_json
@@ -47,14 +48,15 @@ country_json = get_country_json
 
 country_json.each do |destination|
   name = destination['name']['common']
-  if Destination.where(title: name).any?
-    Destination.where(title: name).first.destroy
-  end
   destination_data = {
     title: name,
     default_options: destinations_defaults
   }
-  Destination.create(destination_data)
+  if Destination.where(title: name).any?
+    Destination.where(title: name).first.update(destination_data)
+  else
+    Destination.create(destination_data)
+  end
 end
 
 if user.trips.length == 0

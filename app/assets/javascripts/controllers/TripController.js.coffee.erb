@@ -68,7 +68,7 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
       $location.url("/dashboard")
   
   $scope.costEdited = (cost) ->
-    @costService.update(cost, title: cost.title, estimate: cost.estimate)
+    @costService.update(cost, title: cost.title, estimate: cost.estimate, quantity: cost.quantity)
     updateTotalEstimatedCost()
 
   $scope.dueDatePicked = (task) ->
@@ -131,7 +131,7 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
       all_costs = $scope.trip.unassociated_costs.concat(destination_costs)
       $scope.totalEstimatedCost = all_costs.map(
         (el)->
-          parseInt(el.estimate)
+          (parseInt(el.estimate) * parseInt(el.quantity))
       ).reduce(
         (pv, cv) ->
           pv + cv;
