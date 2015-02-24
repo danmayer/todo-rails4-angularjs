@@ -8,8 +8,26 @@ user = User.first
 trip = user.trips.first
 
 destinations_defaults = {
-  visa: 100,
-  flight: 1000
+  costs: [
+    {
+      title: "flight",
+      notes: "The cost to fly to this country from your previous country",
+      estimate: 800.00,
+      quantity: 1
+    },
+    {
+      title: "Visa",
+      notes: "You might need to get a Visa to visit this country",
+      estimate: 100.00,
+      quantity: 1
+    },
+    {
+      title: "immunizations",
+      notes: "You might need some immunizations, sometimes health insurance covers this.",
+      estimate: 100.00,
+      quantity: 1
+    },
+  ]
 }
 
 def get_country_json
