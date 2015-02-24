@@ -13,3 +13,9 @@
 .cost-buttons.pull-right
   button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteCost(cost)")
     span.glyphicon.glyphicon-ban-circle
+  calendar(model="cost.due_date" on-change="dueDatePicked(cost)")
+    button.btn.btn-info.btn-xs.pull-right(type="button")
+      span.glyphicon.glyphicon-time
+    .cost-due-date(ng-show="cost.due_date")
+      small
+        ' Due date: {{cost.due_date}}
