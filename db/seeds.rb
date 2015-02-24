@@ -52,7 +52,7 @@ country_json.each do |destination|
   end
   destination_data = {
     title: name,
-    default_options: destinations_defaults.to_json
+    default_options: destinations_defaults
   }
   Destination.create(destination_data)
 end
