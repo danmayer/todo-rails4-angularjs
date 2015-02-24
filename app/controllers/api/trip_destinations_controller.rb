@@ -17,12 +17,12 @@ class Api::TripDestinationsController < Api::BaseController
   end
 
   def update
-    trip.update_attributes(safe_params)
+    trip_destination.update_attributes(safe_params)
     render nothing: true
   end
 
   def destroy
-    trip.destroy
+    trip_destination.destroy
     render nothing: true
   end
 

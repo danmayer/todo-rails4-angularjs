@@ -22,10 +22,8 @@ technologies.
 
 # TODO
 * make days a required trip_destinations field
-*  default values for cost
-  * estimate, quanity, etc
 * default values for destination
-  * hotel, flight, visa, food, big ticket items for coutries (Angkor passes)
+  * dynamic hotel, flight, visa, food, big ticket items for coutries (Angkor passes)
 * integrate into picoappz.com
 * currency switcher in header
   * looking at money gem and money-rails
@@ -48,6 +46,10 @@ technologies.
 * collaborators (trip editors)
 * swagger api docs
 * fix page load flickering (ng-cloak not doing what I expect ask Angular club)
+
+# Refactoring
+
+* add [slim partials](http://www.rubydoc.info/gems/slim/frames)
 
 # Improvements
 

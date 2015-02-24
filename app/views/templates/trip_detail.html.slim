@@ -65,6 +65,9 @@
         li.list-group-item(ng-repeat="destination in trip.trip_destinations | orderBy:sortMethod" ng-class="{arrived: destination.arrival}")
           .destination-title
             ' {{destination.id}}, {{destination.title}}, {{destination.arrival}}, days {{destination.days}}
+          .cost-buttons.pull-right
+                button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteDestination(destination)")
+                  span.glyphicon.glyphicon-ban-circle
           ul.list-group(ui-sortable="sortableCosts" ng-model="destination.costs" ui-sortable-ext="sortableEnabled")
             li.list-group-item(ng-repeat="cost in destination.costs | orderBy:sortMethod" ng-class="{completed: cost.completed}")
               .cost-completed
