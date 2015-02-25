@@ -22,7 +22,6 @@ technologies.
 
 # TODO
 
-* cost isn't defaulting on quantity
 * make days a required trip_destinations field
 * chart breakdown of costs
 * breakdown estimated cost by country.

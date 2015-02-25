@@ -30,11 +30,11 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
   $scope.addCost = (destination)->
     raisePriorities()
     if destination
-      cost = @costService.create(title: destination.costTitle, estimate: destination.costEstimate, trip_destinations_id: destination.id)
+      cost = @costService.create(title: destination.costTitle, estimate: destination.costEstimate, trip_destinations_id: destination.id, quantity: 1)
       destination.costTitle = ""
       destination.costEstimate = ""
     else
-      cost = @costService.create(title: $scope.costTitle, estimate: $scope.costEstimate)
+      cost = @costService.create(title: $scope.costTitle, estimate: $scope.costEstimate, quantity: 1)
       $scope.costTitle = ""
       $scope.costEstimate = ""
     cost.priority = 1
