@@ -22,6 +22,7 @@ technologies.
 
 # TODO
 
+* cost isn't defaulting on quantity
 * make days a required trip_destinations field
 * chart breakdown of costs
 * breakdown estimated cost by country.
@@ -57,6 +58,10 @@ technologies.
 # Improvements
 
 * [better mailchimp](http://designshack.net/articles/css/custom-mailchimp-email-signup-form/)
+
+# Ideas
+
+* [perhaps itegrate open_calais for location info](https://github.com/elguapo1611/open_calais)
 
 # Thanks for the help
 

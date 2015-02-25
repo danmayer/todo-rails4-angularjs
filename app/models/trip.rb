@@ -35,13 +35,7 @@ class Trip < ActiveRecord::Base
           notes: "You might need new gear (USB batter, kindle, tablet, camera)",
           estimate: 300.00,
           quantity: 1
-        },
-        {
-          title: "immunizations",
-          notes: "You might need some immunizations",
-          estimate: 100.00,
-          quantity: 1
-        },
+        }
       ]
     }
   end

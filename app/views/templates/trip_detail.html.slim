@@ -1,11 +1,5 @@
 .ng-cloak(ng-init="init()")
   div.row
-    div.col-md-12
-      div.panel-heading
-        editablespan.edit-trip-title(model="trip.title" on-ready="tripTitleEdited(trip.title)" input-class="form-control" span-class="trip-title")
-        button.btn.btn-danger.btn-xs.trip-delete(type="button" ng-click="tripDelete(trip)")
-          span.glyphicon.glyphicon-ban-circle
-  div.row
     div.col-md-8
       = render :partial => "trip_forms"
     div.col-md-4.text-right
@@ -14,15 +8,9 @@
   div.row
     div.col-md-12
       ul.list-group(ui-sortable="sortableCosts" ng-model="trip.unassociated_costs" ui-sortable-ext="sortableEnabled")
+
+        li.list-group-item(ng-repeat="destination in trip.trip_destinations | orderBy:sortMethod" ng-class="{arrived: destination.arrival}")
+          = render :partial => "destination_item_row"  
+
         li.list-group-item(ng-repeat="cost in trip.unassociated_costs | orderBy:sortMethod" ng-class="{completed: cost.completed}")
           = render :partial => "cost_item_row"
-      ul.list-group(ui-sortable="sortableDestinations" ng-model="trip.trip_destinations" ui-sortable-ext="sortableEnabled")
-        li.list-group-item(ng-repeat="destination in trip.trip_destinations | orderBy:sortMethod" ng-class="{arrived: destination.arrival}")
-          .destination-title
-            ' {{destination.id}}, {{destination.title}}, {{destination.arrival}}, days {{destination.days}}
-          .cost-buttons.pull-right
-                button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteDestination(destination)")
-                  span.glyphicon.glyphicon-ban-circle
-          ul.list-group(ui-sortable="sortableCosts" ng-model="destination.costs" ui-sortable-ext="sortableEnabled")
-            li.list-group-item(ng-repeat="cost in destination.costs | orderBy:sortMethod" ng-class="{completed: cost.completed}")
-              = render :partial => "cost_item_row"

@@ -27,9 +27,16 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
     tripDestination = @tripDestinationService.delete(destination)
     $scope.trip = @tripService.find $routeParams.trip_id, updateTotalEstimatedCost
 
-  $scope.addCost = ->
+  $scope.addCost = (destination)->
     raisePriorities()
-    cost = @costService.create(title: $scope.costTitle, estimate: $scope.costEstimate, trip_destinations_id: $scope.costTripDestinations)
+    if destination
+      cost = @costService.create(title: destination.costTitle, estimate: destination.costEstimate, trip_destinations_id: destination.id)
+      destination.costTitle = ""
+      destination.costEstimate = ""
+    else
+      cost = @costService.create(title: $scope.costTitle, estimate: $scope.costEstimate)
+      $scope.costTitle = ""
+      $scope.costEstimate = ""
     cost.priority = 1
     if $scope.isUndefinedOrNull(cost.trip_destinations_id)
       $scope.trip.unassociated_costs.unshift(cost)
@@ -38,9 +45,6 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
         return parseInt(el.id)==parseInt(cost.trip_destinations_id)
       )[0].costs.unshift(cost)
     updateTotalEstimatedCost()
-    $scope.costTitle = ""
-    $scope.costEstimate = ""
-    $scope.costTripDestinations = ""
 
   $scope.deleteCost = (cost) ->
     lowerPrioritiesBelow(cost)

@@ -1,0 +1,21 @@
+h4.destination-title
+  '{{destination.title}}
+span.destination-info
+  'arrival: {{destination.arrival | date:'yyyy-MM-dd'}}
+span.destination-info
+  'duration stay: {{destination.days}}
+.cost-buttons.pull-right
+  button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteDestination(destination)")
+    span.glyphicon.glyphicon-ban-circle
+
+h5.add-trip-cost
+  'add {{destination.title}} cost
+form#new_cost.form-inline(ng-submit="addCost(destination)")
+  .form-group
+    input#costTitle.input(type="text" autofocus="autofocus" placeholder="cost title" maxlength="255" ng-model="destination.costTitle" data-non-blank)
+    input#costEstimate.input.input-digits(type="text" placeholder="cost estimate" maxlength="50" ng-model="destination.costEstimate" data-non-blank)
+    button.btn.btn-primary.btn-sm.right-button(type="submit") add
+
+ul.list-group(ui-sortable="sortableCosts" ng-model="destination.costs" ui-sortable-ext="sortableEnabled")
+  li.list-group-item(ng-repeat="cost in destination.costs | orderBy:sortMethod" ng-class="{completed: cost.completed}")
+    = render :partial => "cost_item_row"
