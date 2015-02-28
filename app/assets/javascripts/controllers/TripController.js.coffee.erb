@@ -10,18 +10,20 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
     $scope.trip = @tripService.find $routeParams.trip_id, updateTotalEstimatedCost
     $scope.destinations = @destinationService.all()
     $scope.totalEstimatedCost = 0.00
+    $scope.tripService = @tripService
 
   $scope.searchString = (data) ->
     if(data && data.originalObject && data.originalObject.id)
       $scope.destinationDestinationId = data.originalObject.id
 
   $scope.addDestination = ->
-    tripDestination = @tripDestinationService.create(destination_id: $scope.destinationDestinationId, days: $scope.destinationDays)
-    $scope.searchStr = ''
-    $scope.destinationDestinationId = ""
-    $scope.destinationDays = ""
-    $('#destinationTitle_value').val('')
-    $scope.trip = @tripService.find $routeParams.trip_id, updateTotalEstimatedCost
+    tripDestination = @tripDestinationService.create({destination_id: $scope.destinationDestinationId, days: $scope.destinationDays}, () ->
+      $scope.searchStr = ''
+      $scope.destinationDestinationId = ""
+      $scope.destinationDays = ""
+      $('#destinationTitle_value').val('')
+      $scope.trip = $scope.tripService.find $routeParams.trip_id, updateTotalEstimatedCost
+    )
 
   $scope.deleteDestination = (destination) ->
     tripDestination = @tripDestinationService.delete(destination)
