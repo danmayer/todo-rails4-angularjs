@@ -1,21 +1,18 @@
-.cost-completed
-  input(type="checkbox" ng-model="cost.completed" ng-change="toggleCost(cost)")
-.cost-title
-  editablespan(model="cost.title" on-ready="costEdited(cost)" input-class="form-control")
-.cost-estimate
-  span.context
-    ' estimate
-  editablespan(model="cost.estimate" on-ready="costEdited(cost)" input-class="form-control")
-.cost-quantity
-  span.context
-    ' * quantity
-  editablespan(model="cost.quantity" on-ready="costEdited(cost)" input-class="form-control")
-.cost-buttons.pull-right
-  button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteCost(cost)")
-    span.glyphicon.glyphicon-ban-circle
-  calendar(model="cost.due_date" on-change="dueDatePicked(cost)")
-    button.btn.btn-info.btn-xs.pull-right(type="button")
-      span.glyphicon.glyphicon-time
-    .cost-due-date(ng-show="cost.due_date")
-      small
-        ' Due date: {{cost.due_date}}
+div.row
+    div.cost-completed-box.col-md-1
+      input(type="checkbox" ng-model="cost.completed" ng-change="toggleCost(cost)")
+    div.cost-title-input.col-md-3
+      editablespan(model="cost.title" on-ready="costEdited(cost)" input-class="form-control")
+    div.cost-estimate-input.col-md-3
+      editablespan(model="cost.estimate" on-ready="costEdited(cost)" input-class="form-control")
+    .cost-quantity-input.col-md-3
+      editablespan(model="cost.quantity" on-ready="costEdited(cost)" input-class="form-control")
+    .cost-buttons-input.col-md-2
+      button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteCost(cost)")
+        span.glyphicon.glyphicon-ban-circle
+      calendar(model="cost.due_date" on-change="dueDatePicked(cost)")
+        button.btn.btn-info.btn-xs.pull-right(type="button")
+          span.glyphicon.glyphicon-time
+        .cost-due-date(ng-show="cost.due_date")
+          small
+            ' Due date: {{cost.due_date}}

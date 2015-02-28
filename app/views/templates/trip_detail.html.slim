@@ -12,5 +12,7 @@
         li.list-group-item(ng-repeat="destination in trip.trip_destinations | orderBy:sortMethod" ng-class="{arrived: destination.arrival}")
           = render :partial => "destination_item_row"  
 
+        li.list-group-item
+          = render :partial => "cost_header_item_row"
         li.list-group-item(ng-repeat="cost in trip.unassociated_costs | orderBy:sortMethod" ng-class="{completed: cost.completed}")
           = render :partial => "cost_item_row"

@@ -17,5 +17,7 @@ form#new_cost.form-inline(ng-submit="addCost(destination)")
     button.btn.btn-primary.btn-sm.right-button(type="submit") add
 
 ul.list-group(ui-sortable="sortableCosts" ng-model="destination.costs" ui-sortable-ext="sortableEnabled")
+  li.list-group-item
+    = render :partial => "cost_header_item_row"
   li.list-group-item(ng-repeat="cost in destination.costs | orderBy:sortMethod" ng-class="{completed: cost.completed}")
     = render :partial => "cost_item_row"
