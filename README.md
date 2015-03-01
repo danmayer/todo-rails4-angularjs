@@ -22,11 +22,11 @@ technologies.
 
 # TODO
 
-* drop the concept of real costs
 * add calendar to countries arrival / departure
-* fix that a country added doesn't doesn't display on heroku
-* make days a required trip_destinations field
-* chart breakdown of costs
+  * quick edit arrival departure fields 
+* sort destinations by arrival
+* make days a required trip_destinations field (api)
+* google chart breakdown of costs
 * breakdown estimated cost by country.
 * Angular Club or Brody help
   * fix page load flickering (ng-cloak not doing what I expect)
@@ -35,7 +35,6 @@ technologies.
 * default values for destination
   * dynamic hotel, flight, visa, food, big ticket items for coutries (Angkor passes)
 * integrate into picoappz.com
-* improved design and UX (especially autocomplete box)
 * guest account creation flow (create a whole trip and calculations as a guest and then create account)
 * for data always have a source. So you can link to the page I pulled the visa cost or flight or whatever.
 * currency switcher in header
@@ -51,15 +50,14 @@ technologies.
   * http://ourairports.com/data/
   * http://datahub.io/dataset/open-flights
   * autocomplete cities in a country with [angular google places autocomplete](http://ngmodules.org/modules/ngAutocomplete), other advanced places options.
-* autofill cities on typing
 * trip sharing (private, restricted, public)
 * collaborators (trip editors)
 * swagger api docs
 
-
 # Refactoring
 
 * countries are rendered into js, that should be a remote json call. Currently the assets cache
+* move more out of controller to angular Directives and services
 
 # Improvements
 

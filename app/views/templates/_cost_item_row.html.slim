@@ -1,7 +1,5 @@
 div.row
-    div.cost-completed-box.col-md-1
-      input(type="checkbox" ng-model="cost.completed" ng-change="toggleCost(cost)")
-    div.cost-title-input.col-md-3
+    div.cost-title-input.col-md-4
       editablespan(model="cost.title" on-ready="costEdited(cost)" input-class="form-control")
     div.cost-estimate-input.col-md-2
       editablespan(model="cost.estimate" on-ready="costEdited(cost)" input-class="form-control")
