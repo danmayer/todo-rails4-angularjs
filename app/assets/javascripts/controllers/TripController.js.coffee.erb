@@ -127,6 +127,9 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
   costsBelow = (cost) ->
     $scope.trip.costs.slice($scope.trip.costs.indexOf(cost), $scope.trip.costs.length)
 
+  $scope.costTotal = (cost) ->
+    (cost.estimate * cost.quantity)
+
   updateTotalEstimatedCost = ->
     if $scope.trip && $scope.trip.costs && $scope.trip.trip_destinations
       destination_costs = $scope.trip.trip_destinations.map(

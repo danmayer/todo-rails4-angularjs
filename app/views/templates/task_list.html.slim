@@ -21,7 +21,7 @@
         span.input-group-btn
           button.btn.btn-primary.btn-lg(type="submit") add
     ul.list-group(ui-sortable="sortableOptions" ng-model="list.tasks" ui-sortable-ext="sortableEnabled")
-      li.list-group-item(ng-repeat="task in list.tasks | orderBy:sortMethod" ng-class="{completed: task.completed, draggable: sortMethod == 'priority'}")
+      li.list-group-item(ng-repeat="task in list.tasks | orderBy:sortMethod" ng-class="{completed: task.completed, sortMethod == 'priority'}")
         .task-completed
           input(type="checkbox" ng-model="task.completed" ng-change="toggleTask(task)")
         .task-description

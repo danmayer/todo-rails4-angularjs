@@ -3,16 +3,12 @@ div.row
       input(type="checkbox" ng-model="cost.completed" ng-change="toggleCost(cost)")
     div.cost-title-input.col-md-3
       editablespan(model="cost.title" on-ready="costEdited(cost)" input-class="form-control")
-    div.cost-estimate-input.col-md-3
+    div.cost-estimate-input.col-md-2
       editablespan(model="cost.estimate" on-ready="costEdited(cost)" input-class="form-control")
-    .cost-quantity-input.col-md-3
+    .cost-quantity-input.col-md-2
       editablespan(model="cost.quantity" on-ready="costEdited(cost)" input-class="form-control")
+    .cost-total-display.col-md-2
+      '{{costTotal(cost)}}
     .cost-buttons-input.col-md-2
       button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteCost(cost)")
         span.glyphicon.glyphicon-ban-circle
-      calendar(model="cost.due_date" on-change="dueDatePicked(cost)")
-        button.btn.btn-info.btn-xs.pull-right(type="button")
-          span.glyphicon.glyphicon-time
-        .cost-due-date(ng-show="cost.due_date")
-          small
-            ' Due date: {{cost.due_date}}
