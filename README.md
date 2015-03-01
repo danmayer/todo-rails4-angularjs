@@ -37,6 +37,7 @@ technologies.
 * integrate into picoappz.com
 * improved design and UX (especially autocomplete box)
 * guest account creation flow (create a whole trip and calculations as a guest and then create account)
+* for data always have a source. So you can link to the page I pulled the visa cost or flight or whatever.
 * currency switcher in header
   * looking at money gem and money-rails
   * http://www.xe.com/?r=
