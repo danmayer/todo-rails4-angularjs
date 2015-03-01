@@ -22,14 +22,16 @@ technologies.
 
 # TODO
 
-* add line item total
 * drop the concept of real costs
-* add calendar to countries
+* add calendar to countries arrival / departure
 * fix that a country added doesn't doesn't display on heroku
 * make days a required trip_destinations field
 * chart breakdown of costs
 * breakdown estimated cost by country.
-* fix page load flickering (ng-cloak not doing what I expect ask Angular club)
+* Angular Club or Brody help
+  * fix page load flickering (ng-cloak not doing what I expect)
+  * flicker on reloading trip
+  * why can't I get cost.total to work opposed to costTotal(cost)
 * default values for destination
   * dynamic hotel, flight, visa, food, big ticket items for coutries (Angkor passes)
 * integrate into picoappz.com
