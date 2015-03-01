@@ -12,8 +12,12 @@ angular.module('todoApp').factory 'TripDestination', ($resource, $http) ->
       defaults.patch['Content-Type'] = 'application/json'
 
     create: (attrs,successHandler) ->
-      new @service(tripDestination: attrs).$save ((tripDestination) -> attrs.id = tripDestination.id), @errorHandler
-      successHandler? successHandler : null
+      new @service(tripDestination: attrs).$save (
+        (tripDestination) ->
+          attrs.id = tripDestination.id
+          successHandler? successHandler : null
+      ),
+      @errorHandler
       attrs
 
     delete: (tripDestination) ->

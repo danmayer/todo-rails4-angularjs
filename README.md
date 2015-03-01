@@ -22,6 +22,10 @@ technologies.
 
 # TODO
 
+* add line item total
+* drop the concept of real costs
+* add calendar to countries
+* fix that a country added doesn't doesn't display on heroku
 * make days a required trip_destinations field
 * chart breakdown of costs
 * breakdown estimated cost by country.
