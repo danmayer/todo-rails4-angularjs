@@ -17,7 +17,7 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
       $scope.destinationDestinationId = data.originalObject.id
 
   $scope.addDestination = ->
-    tripDestination = @tripDestinationService.create({destination_id: $scope.destinationDestinationId, days: $scope.destinationDays}, () ->
+    tripDestination = @tripDestinationService.create({destination_id: $scope.destinationDestinationId, days: $scope.destinationDays, title: $('#destinationTitle_value').val()}, () ->
       $scope.searchStr = ''
       $scope.destinationDestinationId = ""
       $scope.destinationDays = ""

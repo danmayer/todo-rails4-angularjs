@@ -22,6 +22,7 @@ technologies.
 
 # TODO
 
+* If you don't select from autocomplete adding a destination fails
 * add calendar to countries arrival / departure
   * quick edit arrival departure fields 
 * sort destinations by arrival

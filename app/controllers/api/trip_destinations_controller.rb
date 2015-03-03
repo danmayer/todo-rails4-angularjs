@@ -12,6 +12,11 @@ class Api::TripDestinationsController < Api::BaseController
   def create
     destination_params = safe_params
     destination_params[:arrival] = parsed_arrival
+    destination_title = destination_params.delete(:title)
+    if (destination_params[:destination_id])==nil
+      destination_id = Destination.where(:title => destination_title.try(:capitalize)).try(:first).try(:id)
+      destination_params[:destination_id] = destination_id if destination_id
+    end
     trip_destination = trip.trip_destinations.create!(destination_params)
     render json: trip_destination
   end
@@ -48,6 +53,6 @@ class Api::TripDestinationsController < Api::BaseController
   end
 
   def safe_params
-    params.require(:tripDestination).permit(:destination_id, :arrival, :days)
+    params.require(:tripDestination).permit(:destination_id, :arrival, :days, :title)
   end
 end
