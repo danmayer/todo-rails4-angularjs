@@ -20,6 +20,13 @@ angular.module('todoApp').factory 'TripDestination', ($resource, $http) ->
       @errorHandler
       attrs
 
+    createWithPromise: (attrs) ->
+      promise = new @service(tripDestination: attrs).$save (
+        (tripDestination) -> attrs.id = tripDestination.id
+      ),
+      @errorHandler
+      promise
+
     delete: (tripDestination) ->
       new @service().$delete {id: tripDestination.id}, (-> null), @errorHandler
 

@@ -17,13 +17,13 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
       $scope.destinationDestinationId = data.originalObject.id
 
   $scope.addDestination = ->
-    tripDestination = @tripDestinationService.create({destination_id: $scope.destinationDestinationId, days: $scope.destinationDays, title: $('#destinationTitle_value').val()}, () ->
-      $scope.searchStr = ''
-      $scope.destinationDestinationId = ""
-      $scope.destinationDays = ""
-      $('#destinationTitle_value').val('')
-      $scope.trip = $scope.tripService.find $routeParams.trip_id, updateTotalEstimatedCost
-    )
+    tripDestination = @tripDestinationService.createWithPromise({destination_id: $scope.destinationDestinationId, days: $scope.destinationDays, title: $('#destinationTitle_value').val()})
+    tripDestination.then (data) ->
+        $scope.searchStr = ''
+        $scope.destinationDestinationId = ""
+        $scope.destinationDays = ""
+        $('#destinationTitle_value').val('')
+        $scope.trip = $scope.tripService.find $routeParams.trip_id, updateTotalEstimatedCost
 
   $scope.deleteDestination = (destination) ->
     tripDestination = @tripDestinationService.delete(destination)
