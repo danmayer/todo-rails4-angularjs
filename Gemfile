@@ -15,6 +15,8 @@ gem 'slim'
 gem 'active_model_serializers'
 gem 'jquery-ui-rails'
 gem 'acts_as_list'
+gem 'nokogiri'
+
 # looking at money and money-rails to store values
 # gem 'money'
 # upgrade rails and devise first and wait till I care about having an admin

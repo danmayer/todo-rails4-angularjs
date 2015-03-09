@@ -22,13 +22,14 @@ technologies.
 
 # TODO
 
+* Setting home country needs to use the auto-complete and match the country codes.
 * If you don't select from autocomplete adding a destination fails
 * add calendar to countries arrival / departure
   * quick edit arrival departure fields 
-* sort destinations by arrival
 * make days a required trip_destinations field (api)
 * google chart breakdown of costs
 * breakdown estimated cost by country.
+* Visa pricing: https://www.visahq.com/citizens/United-States/
 * Angular Club or Brody help
   * fix page load flickering (ng-cloak not doing what I expect)
   * flicker on reloading trip

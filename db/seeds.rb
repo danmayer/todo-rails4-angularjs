@@ -3,10 +3,12 @@
 
 require 'net/http'
 require "net/https"
+require 'csv'
 
 user = User.first
 trip = user.trips.first
 
+DEFAULT_VISA_COST = 100.00
 destinations_defaults = {
   costs: [
     {
@@ -18,7 +20,7 @@ destinations_defaults = {
     {
       title: "Visa",
       notes: "You might need to get a Visa to visit this country",
-      estimate: 100.00,
+      estimate: DEFAULT_VISA_COST,
       quantity: 1
     },
     {
@@ -28,7 +30,8 @@ destinations_defaults = {
       quantity: 1
     }
   ],
-  cost_per_day: 45.00
+  cost_per_day: 45.00,
+  hotel_per_night: 30.00
 }
 
 def get_country_json
@@ -44,13 +47,48 @@ def get_country_json
   JSON.parse(response.body)
 end
 
+###
+# This mostly works but not all the airport codes match to Kayak how to ensure that
+###
+def load_airport_data
+  return @csv_data if @csv_data
+
+  @csv_data = {}
+  airport_data = File.read(Rails.root.join('db/migrate/airports.dat'))
+  CSV.new(airport_data).each do |row|
+    #country_name => airport code
+    if @csv_data[row[3]].nil?
+      @csv_data[row[3]] = row[4]
+    end
+  end
+  @csv_data
+end
+
 country_json = get_country_json
+aiport_data = load_airport_data
+visas = Visa.new
 
 country_json.each do |destination|
   name = destination['name']['common']
+  next unless name.match(/vietnam/i)
+  airport_code = nil
+  country_defaults = destinations_defaults
+  
+  if aiport_data[name]
+    airport_code = aiport_data[name]
+  end
+
+  if Destination.where(title: name).first.try(:estimated_visa_cost)==DEFAULT_VISA_COST
+    if visa_cost = visas.cost_for_country(name.downcase)
+      country_defaults[:costs].select{|c| c[:title].match(/visa/i) }.first[:estimate] = visa_cost
+    end
+    sleep(2)
+  end
+  
   destination_data = {
     title: name,
-    default_options: destinations_defaults
+    airport_code: airport_code,
+    default_options: country_defaults
   }
   if Destination.where(title: name).any?
     Destination.where(title: name).first.update(destination_data)

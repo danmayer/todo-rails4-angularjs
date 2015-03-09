@@ -1,9 +1,12 @@
 div.row
-    div.cost-title-input.col-md-4
+    div.cost-title-input.col-md-3
       editablespan(model="cost.title" on-ready="costEdited(cost)" input-class="form-control")
+    div.cost-title-input.col-md-2
+      a(href="{{cost.source_link}}")
+        '{{cost.source_title}}
     div.cost-estimate-input.col-md-2
       editablespan(model="cost.estimate" on-ready="costEdited(cost)" input-class="form-control")
-    .cost-quantity-input.col-md-2
+    .cost-quantity-input.col-md-1
       editablespan(model="cost.quantity" on-ready="costEdited(cost)" input-class="form-control")
     .cost-total-display.col-md-2
       '{{costTotal(cost)}}

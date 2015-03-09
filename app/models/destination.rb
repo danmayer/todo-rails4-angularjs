@@ -5,4 +5,8 @@ class Destination < ActiveRecord::Base
   serialize :default_options, JSON
   
   validates :title, presence: true
+
+  def estimated_visa_cost
+    default_options['costs'].select{|c| c['title'].match(/visa/i)}.first['estimate']
+  end
 end

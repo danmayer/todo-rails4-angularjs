@@ -17,15 +17,32 @@ class TripDestination < ActiveRecord::Base
     initial_costs.each do |cost|
       cost.merge!(trip_destinations_id: self.id)
     end
-    initial_costs << {
+    
+    initial_costs << spending_money_cost
+    initial_costs << hotel_cost
+    
+    trip.costs.create(initial_costs)
+    self.save
+  end
+
+  def spending_money_cost
+    {
       title: "daily spending money",
       notes: "Daily spend (food, drinks, tourist sites, souvenirs, and local transport)",
       estimate: destination.default_options['cost_per_day'],
       quantity: self.days,
       trip_destinations_id: self.id
     }
-    trip.costs.create(initial_costs)
-    self.save
+  end
+  
+  def hotel_cost
+    {
+      title: "Hotel accomidations cost",
+      notes: "This is the cost per night of a hotel in this country",
+      estimate: destination.default_options['hotel_per_night'],
+      quantity: self.days,
+      trip_destinations_id: self.id
+    }
   end
   
 end
