@@ -72,6 +72,7 @@ country_json.each do |destination|
   name = destination['name']['common']
   airport_code = nil
   country_defaults = destinations_defaults
+  visa_cost = nil
   
   if aiport_data[name]
     airport_code = aiport_data[name]
