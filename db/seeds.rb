@@ -8,7 +8,7 @@ require 'csv'
 user = User.first
 trip = user.trips.first
 
-DEFAULT_VISA_COST = 100.00
+
 destinations_defaults = {
   costs: [
     {
@@ -20,7 +20,7 @@ destinations_defaults = {
     {
       title: "Visa",
       notes: "You might need to get a Visa to visit this country",
-      estimate: DEFAULT_VISA_COST,
+      estimate: Visa::DEFAULT_VISA_COST,
       quantity: 1
     },
     {

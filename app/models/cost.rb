@@ -12,14 +12,22 @@ class Cost < ActiveRecord::Base
   end
 
   def source_link
-    if title.match(/flight/)
+    if title.match(/flight/i)
       "http://www.kayak.com/flights/#{from_aiport}-#{to_airport}/#{arrival_date}/#{departure_date}"
+    elsif title.match(/visa/i)
+      if trip_destination
+        Visa.country_url(trip_destination.title.downcase)
+      end
     end
   end
 
   def source_title
     if title.match(/flight/)
       "flight prices"
+    elsif title.match(/visa/i)
+      if trip_destination
+        "visa price"
+      end
     end
   end
 

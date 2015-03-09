@@ -5,6 +5,7 @@ require 'open-uri'
 
 class Visa
   SOURCE_URL = 'https://www.visahq.com/citizens/United-States/'
+  DEFAULT_VISA_COST = 100.00
   
   def initialize
   end
@@ -18,16 +19,20 @@ class Visa
     end
   end
 
+  def country_url(country)
+    Visa.country_url(country)
+  end
+
+  def self.country_url(country)
+    "https://#{country}.visahq.com/"
+  end
+  
   private
 
   def visa_countries
     return @visa_countries if @visa_countries
     doc = Nokogiri::HTML(open(SOURCE_URL))
     @visa_countries = doc.css('a').map { |link| link['href'] }
-  end
-
-  def country_url(country)
-    "https://#{country}.visahq.com/"
   end
   
   def country_data(country)
