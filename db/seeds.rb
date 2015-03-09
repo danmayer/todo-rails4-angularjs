@@ -70,7 +70,6 @@ visas = Visa.new
 
 country_json.each do |destination|
   name = destination['name']['common']
-  next unless name.match(/vietnam/i)
   airport_code = nil
   country_defaults = destinations_defaults
   
