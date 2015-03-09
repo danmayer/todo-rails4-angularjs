@@ -22,6 +22,7 @@ technologies.
 
 # TODO
 
+* when adding a destination require arrival date
 * Setting home country needs to use the auto-complete and match the country codes.
 * If you don't select from autocomplete adding a destination fails
 * add calendar to countries arrival / departure
