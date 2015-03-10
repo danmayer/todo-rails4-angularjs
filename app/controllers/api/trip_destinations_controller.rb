@@ -1,3 +1,5 @@
+require 'Date'
+
 class Api::TripDestinationsController < Api::BaseController
   before_action :check_owner, only: [:show, :update, :destroy]
   
@@ -34,8 +36,9 @@ class Api::TripDestinationsController < Api::BaseController
   private
   def parsed_arrival
     begin
-      Time.parse(destination_params[:arrival])
-    rescue
+      Date.strptime(safe_params[:arrival], "%m/%d/%Y")
+    rescue => e
+      Rails.logger.info("error parsing date: #{safe_params[:arrival]}")
       Time.now
     end
   end
