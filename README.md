@@ -1,9 +1,9 @@
 # Travel Calculator
 
-This app helps estimate international long term travel costs. It helps cover build a good estimate of long term travel based on location, days abroad, and lvel of comfort, and daily spending level.
+This app helps estimate international travel costs. It helps create a good estimate of long term travel costs based on country, days abroad, level of comfort, and daily spending level.
 
-It is also being built just as a good excuse to learning new
-technologies.
+Really I built this as a good excuse to learning new
+technologies. If you find any issues or have ideas for improvements, please submit a github issue.
 
 [ ![Codeship Status for danmayer/travel_calculator](https://codeship.com/projects/a35ff250-97b7-0132-f770-6a66c6b56914/status?branch=master)](https://codeship.com/projects/63202)
 
@@ -23,13 +23,24 @@ technologies.
 
 # TODO
 
-* when adding a destination require arrival date
+* moved bootstrap CSS into app
+* costs sort order
+* disable drag and drop on costs
+* destinations sorted by arrival date
+* flights from home country to first location
+* flights from last location to home country
+* rethink flights source URL as they are priced as round trip opposed to moving forward (all 1 way?)
+* calendar view to add arrival date
+* dynamic hotel data
+* click for view / edit detailed notes (cost or trip destination)
 * Setting home country needs to use the auto-complete and match the country codes.
 * add calendar to countries arrival / departure
-  * quick edit arrival departure fields 
+  * quick edit arrival and duration fields 
 * make days a required trip_destinations field (api)
+* ways to verify or capture places where airport codes are missing
+* ways to erify or capture where visa infomation doesn't match up
 * google chart breakdown of costs
-* breakdown estimated cost by country.
+* row breakdown estimated cost by country.
 * Visa pricing: https://www.visahq.com/citizens/United-States/
 * Angular Club or Brody help
   * fix page load flickering (ng-cloak not doing what I expect)
@@ -49,6 +60,8 @@ technologies.
 * upgrade Rails
 * upgrade Devise
 * Start building out tests
+* kayak affliate
+* Visa application affiliate	
 * later all airports and cities
   * http://ourairports.com/data/
   * http://datahub.io/dataset/open-flights

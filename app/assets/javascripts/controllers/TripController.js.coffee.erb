@@ -73,7 +73,10 @@ angular.module('todoApp').controller "TripController", ($scope, $timeout, $route
     if result
       @tripService.delete(@trip)
       $location.url("/dashboard")
-  
+
+  $scope.destinationEdited = (destination) ->
+    @tripDestinationService.update(destination, title: destination.title, arrival: destination.arrival, days: destination.days)
+
   $scope.costEdited = (cost) ->
     @costService.update(cost, title: cost.title, estimate: cost.estimate, quantity: cost.quantity)
     updateTotalEstimatedCost()

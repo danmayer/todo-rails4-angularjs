@@ -1,9 +1,12 @@
 h4.destination-title
   '{{destination.title}}
 span.destination-info
-  'arrival: {{destination.arrival | date:'yyyy-MM-dd'}}
+  'arrival:
+  editablespan(model="destination.arrival" on-ready="destinationEdited(destination)" input-class="form-control")
+  'arrival: {{destination.arrival | date:'MM-dd-yyyy'}}
 span.destination-info
-  'duration stay: {{destination.days}}
+  'duration stay:
+  editablespan(model="destination.days" on-ready="destinationEdited(destination)" input-class="form-control")
 .cost-buttons.pull-right
   button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteDestination(destination)")
     span.glyphicon.glyphicon-ban-circle
