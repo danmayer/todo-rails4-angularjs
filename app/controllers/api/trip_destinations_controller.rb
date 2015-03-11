@@ -1,6 +1,6 @@
 begin
   require 'Date'
-rescue
+rescue Exception
   #don't care that this fails in asset compilation debug later
 end
   
