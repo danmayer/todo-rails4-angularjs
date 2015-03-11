@@ -1,5 +1,9 @@
-require 'Date'
-
+begin
+  require 'Date'
+rescue
+  #don't care that this fails in asset compilation debug later
+end
+  
 class Api::TripDestinationsController < Api::BaseController
   before_action :check_owner, only: [:show, :update, :destroy]
   
