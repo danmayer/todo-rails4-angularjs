@@ -23,6 +23,7 @@ technologies. If you find any issues or have ideas for improvements, please subm
 
 # TODO
 
+* add trip insurance source to nomads insurance.
 * moved bootstrap CSS into app
 * costs sort order
 * disable drag and drop on costs
@@ -34,6 +35,7 @@ technologies. If you find any issues or have ideas for improvements, please subm
 * dynamic hotel data
 * click for view / edit detailed notes (cost or trip destination)
 * Setting home country needs to use the auto-complete and match the country codes.
+* 
 * add calendar to countries arrival / departure
   * quick edit arrival and duration fields 
 * make days a required trip_destinations field (api)
