@@ -92,3 +92,4 @@ This is a toy app for me to work on to learn some new technologies. So I am sure
 * [todo-rails4-angularjs](https://github.com/mkwiatkowski/todo-rails4-angularjs)
 * [angucomplete-alt](https://github.com/ghiden/angucomplete-alt)
 * [Android Login](http://lucatironi.github.io/tutorial/2012/10/15/ruby_rails_android_app_authentication_devise_tutorial_part_one/)
+* Thanks to Edie Rothman for thelp understanding Angular promises
