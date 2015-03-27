@@ -35,6 +35,12 @@ class Trip < ActiveRecord::Base
           notes: "You might need new gear (USB batter, kindle, tablet, camera)",
           estimate: 300.00,
           quantity: 1
+        },
+        {
+          title: "travel insurance",
+          notes: "You might want travel insurance",
+          estimate: 350.00,
+          quantity: 1
         }
       ]
     }

@@ -1,13 +1,20 @@
 .ng-cloak(ng-init="init()")
   div.row
-    div.col-md-9
+    div.col-md-12
+      editablespan.edit-trip-title(model="trip.title" on-ready="tripTitleEdited(trip.title)" input-class="form-control" span-class="trip-title")
       = render :partial => "trip_forms"
-    div.col-md-3.text-right
-      = render :partial => "right_rail"
 
   div.row
     div.col-md-12
-      ul.list-group(ui-sortable="sortableCosts" ng-model="trip.unassociated_costs" ui-sortable-ext="sortableEnabled")
+      h3.tight Costs
+      ul.list-group
+        li.list-group-item
+          div.total-trip-cost
+            ' Estimated trip cost: {{totalEstimatedCost}}
+
+  div.row
+    div.col-md-12
+      ul.list-group(ng-model="trip.unassociated_costs")
 
         li.list-group-item(ng-repeat="destination in trip.trip_destinations | orderBy:sortMethod" ng-class="{arrived: destination.arrival}")
           = render :partial => "destination_item_row"  

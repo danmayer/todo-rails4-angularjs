@@ -23,15 +23,11 @@ technologies. If you find any issues or have ideas for improvements, please subm
 
 # TODO
 
-* add trip insurance source to nomads insurance.
-* moved bootstrap CSS into app
 * costs sort order
-* disable drag and drop on costs
 * destinations sorted by arrival date
 * flights from home country to first location
 * flights from last location to home country
 * rethink flights source URL as they are priced as round trip opposed to moving forward (all 1 way?)
-* calendar view to add arrival date
 * dynamic hotel data
 * click for view / edit detailed notes (cost or trip destination)
 * Setting home country needs to use the auto-complete and match the country codes.

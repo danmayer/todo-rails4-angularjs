@@ -1,3 +1,4 @@
+# TODO becoming obvious I need some cost subclasses 
 class Cost < ActiveRecord::Base
   belongs_to :trip
   belongs_to :trip_destination, foreign_key: :trip_destinations_id
@@ -18,6 +19,8 @@ class Cost < ActiveRecord::Base
       if trip_destination
         Visa.country_url(trip_destination.title.downcase)
       end
+    elsif title.match(/travel insurance/i)
+      "http://www.worldnomads.com/"
     end
   end
 
@@ -28,6 +31,8 @@ class Cost < ActiveRecord::Base
       if trip_destination
         "visa price"
       end
+    elsif title.match(/travel insurance/i)
+      "insurance price"
     end
   end
 

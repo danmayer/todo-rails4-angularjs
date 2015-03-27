@@ -19,7 +19,7 @@ form#new_cost.form-inline(ng-submit="addCost(destination)")
     input#costEstimate.input.input-digits(type="text" placeholder="cost estimate" maxlength="50" ng-model="destination.costEstimate" data-non-blank)
     button.btn.btn-primary.btn-sm.right-button(type="submit") add
 
-ul.list-group(ui-sortable="sortableCosts" ng-model="destination.costs" ui-sortable-ext="sortableEnabled")
+ul.list-group(ng-model="destination.costs")
   li.list-group-item
     = render :partial => "cost_header_item_row"
   li.list-group-item(ng-repeat="cost in destination.costs | orderBy:sortMethod" ng-class="{completed: cost.completed}")

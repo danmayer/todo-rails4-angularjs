@@ -1,20 +1,8 @@
-div.panel-heading
-  editablespan.edit-trip-title(model="trip.title" on-ready="tripTitleEdited(trip.title)" input-class="form-control" span-class="trip-title")
-button.btn.btn-danger.btn-xs.trip-delete(type="button" ng-click="tripDelete(trip)")
-  span.glyphicon.glyphicon-ban-circle
 h3 Quick Links
 p(data-no-turbolink)
   ul
     li
-      | return to  
-      a(href="/dashboard" data-no-turbolink)
-        'trips dashboard
-    li
-      | create another 
+      | create new 
       a(href="/dashboard" data-no-turbolink)
           'trip
-h3 Costs
-ul.list-group
-  li.list-group-item
-    div.total-trip-cost
-      ' Estimated trip cost: {{totalEstimatedCost}}
+

@@ -2,11 +2,14 @@ div.panel.trip-details
   h4.add-trip-destination
     'add trip destination
   form#new_destination.form-inline(ng-submit="addDestination()")
-    .form-group
+    .form-group(class="col-12")
       angucomplete-alt#destinationTitle(placeholder="destination country" pause="100" selected-object="searchString" local-data="countries" search-fields="title" title-field="title" minlength="1" input-class="input-lg" match-class="highlight" size="12" field-required)
-      input#destinationArrival.input-date.input-lg(type="text" placeholder="03/25/2016" maxlength="16" ng-model="destinationArrival" size="12")
-      input#destinationDays.input-digits.input-lg(type="text" placeholder="# days" maxlength="3" ng-model="destinationDays" size="3" data-non-blank)
-      button.btn.btn-primary.btn-lg.right-button(type="submit") add
+      input#destinationDays.input-digits.input-lg(type="text" placeholder="#days" maxlength="3" ng-model="destinationDays" size="3" data-non-blank)
+      input#destinationArrival.input-date.input-lg(type="text" placeholder="arrival" maxlength="5" ng-model="destinationArrival" size="12")
+      calendar(model="destinationArrival")
+        button.btn.btn-info.btn-lg(type="button")
+          span.glyphicon.glyphicon-time
+      button.btn.btn-primary.btn-lg(type="submit") add
   h4.add-trip-cost
     'add trip cost
   form#new_cost.form-inline(ng-submit="addCost()")
