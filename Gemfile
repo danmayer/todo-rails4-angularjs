@@ -20,14 +20,13 @@ gem 'nokogiri'
 # looking at money and money-rails to store values
 # gem 'money'
 # upgrade rails and devise first and wait till I care about having an admin
-#gem 'activeadmin', github: 'activeadmin'
+# gem 'activeadmin', github: 'activeadmin'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :production do
-  gem 'shelly-dependencies'
   gem 'rails_12factor'
 end
 
