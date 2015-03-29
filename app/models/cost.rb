@@ -26,7 +26,7 @@ class Cost < ActiveRecord::Base
 
   def source_title
     if title.match(/flight/)
-      "flight prices"
+      "flight price"
     elsif title.match(/visa/i)
       if trip_destination
         "visa price"

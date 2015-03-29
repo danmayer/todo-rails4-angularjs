@@ -60,6 +60,6 @@ class Api::TripDestinationsController < Api::BaseController
   end
 
   def safe_params
-    params.require(:tripDestination).permit(:destination_id, :arrival, :days, :title)
+    params.require(:tripDestination).permit(:destination_id, :arrival, :days)
   end
 end
