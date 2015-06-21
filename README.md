@@ -55,7 +55,6 @@ technologies. If you find any issues or have ideas for improvements, please subm
   * http://stackoverflow.com/questions/1019939/ruby-on-rails-best-method-of-handling-currency-money
   * https://github.com/RubyMoney/money
   * https://github.com/RubyMoney/money-rails
-* upgrade Rails
 * upgrade Devise
 * Start building out tests
 * kayak affliate
