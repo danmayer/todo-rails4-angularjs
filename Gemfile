@@ -16,7 +16,7 @@ gem 'active_model_serializers'
 gem 'jquery-ui-rails'
 gem 'acts_as_list'
 gem 'nokogiri'
-gem "skylight"
+#gem "skylight"
 
 # looking at money and money-rails to store values
 # gem 'money'
