@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: todo_rails4_angularjs_development
+  database: travel_calc_development
   pool: 5
   username:
   password:
@@ -32,7 +32,7 @@ development:
   #port: 5432
 
   # Schema search path. The server defaults to $user,public
-  #schema_search_path: todo_rails4_angularjs,sharedapp,public
+  #schema_search_path: travel_calculator,sharedapp,public
 
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
@@ -46,7 +46,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: todo_rails4_angularjs_test
+  database: travel_calc_test
   pool: 5
   username:
   password:
@@ -54,7 +54,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: todo_rails4_angularjs_production
+  database: travel_calc_production
   pool: 5
   username:
   password:

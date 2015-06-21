@@ -14,7 +14,7 @@ describe Api::TasksController do
 
     describe "#index" do
       it "should return json of those tasks" do
-        get :index, task_list_id: task_list.id
+        xhr :get, :index, task_list_id: task_list.id
         json_response.should == [
           {'id' => task1.id, 'description' => task1.description,
             'priority' => 1, 'due_date' => nil, 'completed' => false},
@@ -25,13 +25,13 @@ describe Api::TasksController do
 
       it "should raise RecordNotFound when trying to get tasks for non-existent list" do
         expect {
-          get :index, task_list_id: 0
+          xhr :get, :index, task_list_id: 0
         }.to raise_error(ActiveRecord::RecordNotFound)
       end
 
       it "should return HTTP 401 Unauthorized when trying to get tasks for list of another user" do
         other_task_list = create(:task_list)
-        get :index, task_list_id: other_task_list.id
+        xhr :get, :index, task_list_id: other_task_list.id
         response.status.should == 401
         json_response.should == {'error' => 'unauthorized'}
       end
@@ -55,7 +55,7 @@ describe Api::TasksController do
 
       it "should return json of the just created record" do
         post_create
-        json_response["id"].should == be_an(Integer)
+        json_response["id"].should be_an(Integer)
         json_response["completed"].should == false
         json_response["description"].should == "New task"
         json_response["due_date"].should == nil
@@ -105,7 +105,7 @@ describe Api::TasksController do
         patch_update
         task1.reload.description.should == "New description"
         task1.priority.should == 2
-        task1.completed.should be_true
+        task1.completed.should be true
       end
 
       it "should return 200 OK" do
