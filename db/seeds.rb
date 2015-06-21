@@ -4,10 +4,11 @@
 require 'net/http'
 require "net/https"
 require 'csv'
+require './app/models/visa'
 
 user = User.first
 trip = user.trips.first
-
+visa_estimate = Visa::DEFAULT_VISA_COST
 
 destinations_defaults = {
   costs: [
@@ -20,7 +21,7 @@ destinations_defaults = {
     {
       title: "Visa",
       notes: "You might need to get a Visa to visit this country",
-      estimate: Visa::DEFAULT_VISA_COST,
+      estimate: visa_estimate,
       quantity: 1
     },
     {
@@ -40,9 +41,9 @@ def get_country_json
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = true
   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-  
+
   request = Net::HTTP::Get.new(uri.request_uri)
-  
+
   response = http.request(request)
   JSON.parse(response.body)
 end
@@ -73,18 +74,18 @@ country_json.each do |destination|
   airport_code = nil
   country_defaults = destinations_defaults
   visa_cost = nil
-  
+
   if aiport_data[name]
     airport_code = aiport_data[name]
   end
 
-  if Destination.where(title: name).first.try(:estimated_visa_cost)==DEFAULT_VISA_COST
+  if Destination.where(title: name).first.try(:estimated_visa_cost)==visa_estimate
     if visa_cost = visas.cost_for_country(name.downcase)
       country_defaults[:costs].select{|c| c[:title].match(/visa/i) }.first[:estimate] = visa_cost
     end
     sleep(2)
   end
-  
+
   destination_data = {
     title: name,
     airport_code: airport_code,
