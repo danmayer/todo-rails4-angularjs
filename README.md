@@ -2,14 +2,14 @@
 
 This app helps estimate international travel costs. It helps create a good estimate of long term travel costs based on country, days abroad, level of comfort, and daily spending level.
 
-Really I built this as a good excuse to learning new
+I built this as a good excuse to learn a few
 technologies. If you find any issues or have ideas for improvements, please submit a github issue.
 
-[ ![Codeship Status for danmayer/travel_calculator](https://codeship.com/projects/a35ff250-97b7-0132-f770-6a66c6b56914/status?branch=master)](https://codeship.com/projects/63202)
+[![Codeship Status for danmayer/travel_calculator](https://codeship.com/projects/a35ff250-97b7-0132-f770-6a66c6b56914/status?branch=master)](https://codeship.com/projects/63202)
 
 # Getting started
 
-	bundle install
+    bundle install
     bundle exec rake db:create
     bundle exec rake db:migrate db:test:prepare
     bundle exec rake
@@ -31,7 +31,7 @@ technologies. If you find any issues or have ideas for improvements, please subm
 * dynamic hotel data
 * click for view / edit detailed notes (cost or trip destination)
 * Setting home country needs to use the auto-complete and match the country codes.
-* 
+
 * add calendar to countries arrival / departure
   * quick edit arrival and duration fields 
 * make days a required trip_destinations field (api)
@@ -40,12 +40,9 @@ technologies. If you find any issues or have ideas for improvements, please subm
 * google chart breakdown of costs
 * row breakdown estimated cost by country.
 * Visa pricing: https://www.visahq.com/citizens/United-States/
-* Angular Club or Brody help
-  * fix page load flickering (ng-cloak not doing what I expect)
-  * flicker on reloading trip
-  * why can't I get cost.total to work opposed to costTotal(cost)
+
 * default values for destination
-  * dynamic hotel, flight, visa, food, big ticket items for coutries (Angkor passes)
+  * dynamic hotel, flight, visa, food, big ticket items for countries (Angkor Wat tourist passes)
 * integrate into picoappz.com
 * guest account creation flow (create a whole trip and calculations as a guest and then create account)
 * for data always have a source. So you can link to the page I pulled the visa cost or flight or whatever.
@@ -57,7 +54,7 @@ technologies. If you find any issues or have ideas for improvements, please subm
   * https://github.com/RubyMoney/money-rails
 * upgrade Devise
 * Start building out tests
-* kayak affliate
+* kayak affiliate
 * Visa application affiliate	
 * later all airports and cities
   * http://ourairports.com/data/
@@ -69,7 +66,10 @@ technologies. If you find any issues or have ideas for improvements, please subm
 
 # Refactoring
 
-* countries are rendered into js, that should be a remote json call. Currently the assets cache
+* countries are rendered into js, that should be a remote json call.     
+    * Currently the assets cache
+    * To break asset cache `bundle exec rake assets:clobber`
+* KILL ANGULAR 
 * move more out of controller to angular Directives and services
 
 # Improvements
@@ -78,7 +78,7 @@ technologies. If you find any issues or have ideas for improvements, please subm
 
 # Ideas
 
-* [perhaps itegrate open_calais for location info](https://github.com/elguapo1611/open_calais)
+* [perhaps integrate open_calais for location info](https://github.com/elguapo1611/open_calais)
 
 # Thanks for the help
 
