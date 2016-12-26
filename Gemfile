@@ -17,6 +17,14 @@ gem 'jquery-ui-rails'
 gem 'acts_as_list'
 gem 'nokogiri'
 gem "skylight"
+gem 'figaro'
+
+# coverband
+gem 'coverband'
+gem 'redis'
+
+# verify coverband works with default puma config
+#gem 'puma'
 
 # looking at money and money-rails to store values
 # gem 'money'
