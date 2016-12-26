@@ -24,7 +24,7 @@ gem 'coverband'
 gem 'redis'
 
 # verify coverband works with default puma config
-#gem 'puma'
+gem 'puma'
 
 # looking at money and money-rails to store values
 # gem 'money'
