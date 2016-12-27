@@ -2,7 +2,7 @@
 
 require ::File.expand_path('../config/environment',  __FILE__)
 
-require 'coverband'
-Coverband.configure
+#require 'coverband'
+#Coverband.configure
 
 run Rails.application
