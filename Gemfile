@@ -20,7 +20,11 @@ gem "skylight"
 gem 'figaro'
 
 # coverband
-gem 'coverband'
+gem 'coverband', '1.5.0'
+# local
+#gem 'coverband', '1.4.0', :path => '../coverband'
+
+
 gem 'redis'
 
 # verify coverband works with default puma config

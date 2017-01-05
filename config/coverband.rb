@@ -1,18 +1,27 @@
 Coverband.configure do |config|
   config.root              = Dir.pwd
+
+  # Coverband with Redis
   if defined? Redis
     config.redis           = Redis.new(:url => Figaro.env.REDIS_URL, :db => 1)
   end
+
+  # coverband with filestore
+  # config.coverage_file           = './tmp/coverband_coverage.json'
+
   config.coverage_baseline = Coverband.parse_baseline
   config.root_paths        = ['/app/'] # /app/ is needed for heroku deployments
   # regex paths can help if you are seeing files duplicated for each capistrano deployment release
   #config.root_paths       = ['/server/apps/my_app/releases/\d+/']
-  config.ignore            = ['vendor']
+  config.ignore            = ['vendor', 'assets', '.erb', '.slim']
   # Since rails and other frameworks lazy load code. I have found it is bad to allow
   # initial requests to record with coverband. This ignores first 15 requests
   config.startup_delay     = Rails.env.production? ? 15 : 2
   # Percentage of requests recorded
   config.percentage        = Rails.env.production? ? 30.0 : 100.0
+
+  # defaults to simplecov reporter
+  # config.reporter          = 'console'
 
   config.logger            = Rails.logger
 
